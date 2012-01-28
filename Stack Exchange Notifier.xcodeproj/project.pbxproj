@@ -1,0 +1,447 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		3735B1BD14D3CF94002B0428 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3735B1BC14D3CF94002B0428 /* Cocoa.framework */; };
+		3735B1C714D3CF94002B0428 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3735B1C514D3CF94002B0428 /* InfoPlist.strings */; };
+		3735B1C914D3CF94002B0428 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 3735B1C814D3CF94002B0428 /* main.m */; };
+		3735B1CD14D3CF95002B0428 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 3735B1CB14D3CF95002B0428 /* Credits.rtf */; };
+		3735B1D014D3CF95002B0428 /* Stack_Exchange_NotifierAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3735B1CF14D3CF95002B0428 /* Stack_Exchange_NotifierAppDelegate.m */; };
+		3735B1D314D3CF95002B0428 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3735B1D114D3CF95002B0428 /* MainMenu.xib */; };
+		3735B1DB14D3CF95002B0428 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3735B1DA14D3CF95002B0428 /* SenTestingKit.framework */; };
+		3735B1DC14D3CF95002B0428 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3735B1BC14D3CF94002B0428 /* Cocoa.framework */; };
+		3735B1E414D3CF95002B0428 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3735B1E214D3CF95002B0428 /* InfoPlist.strings */; };
+		3735B1E614D3CF95002B0428 /* Stack_Exchange_NotifierTests.h in Resources */ = {isa = PBXBuildFile; fileRef = 3735B1E514D3CF95002B0428 /* Stack_Exchange_NotifierTests.h */; };
+		3735B1E814D3CF95002B0428 /* Stack_Exchange_NotifierTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3735B1E714D3CF95002B0428 /* Stack_Exchange_NotifierTests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		3735B1DD14D3CF95002B0428 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3735B1AF14D3CF94002B0428 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 3735B1B714D3CF94002B0428;
+			remoteInfo = "Stack Exchange Notifier";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		3735B1B814D3CF94002B0428 /* Stack Exchange Notifier.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Stack Exchange Notifier.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		3735B1BC14D3CF94002B0428 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
+		3735B1BF14D3CF94002B0428 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
+		3735B1C014D3CF94002B0428 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		3735B1C114D3CF94002B0428 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		3735B1C414D3CF94002B0428 /* Stack Exchange Notifier-Info.plist */ = {isa = PBXFileReference; path = "Stack Exchange Notifier-Info.plist"; sourceTree = "<group>"; };
+		3735B1C614D3CF94002B0428 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		3735B1C814D3CF94002B0428 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		3735B1CA14D3CF95002B0428 /* Stack Exchange Notifier-Prefix.pch */ = {isa = PBXFileReference; path = "Stack Exchange Notifier-Prefix.pch"; sourceTree = "<group>"; };
+		3735B1CC14D3CF95002B0428 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = en.lproj/Credits.rtf; sourceTree = "<group>"; };
+		3735B1CE14D3CF95002B0428 /* Stack_Exchange_NotifierAppDelegate.h */ = {isa = PBXFileReference; path = Stack_Exchange_NotifierAppDelegate.h; sourceTree = "<group>"; };
+		3735B1CF14D3CF95002B0428 /* Stack_Exchange_NotifierAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Stack_Exchange_NotifierAppDelegate.m; sourceTree = "<group>"; };
+		3735B1D214D3CF95002B0428 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		3735B1D914D3CF95002B0428 /* Stack Exchange NotifierTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Stack Exchange NotifierTests.octest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		3735B1DA14D3CF95002B0428 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
+		3735B1E114D3CF95002B0428 /* Stack Exchange NotifierTests-Info.plist */ = {isa = PBXFileReference; path = "Stack Exchange NotifierTests-Info.plist"; sourceTree = "<group>"; };
+		3735B1E314D3CF95002B0428 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		3735B1E514D3CF95002B0428 /* Stack_Exchange_NotifierTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Stack_Exchange_NotifierTests.h; sourceTree = "<group>"; };
+		3735B1E714D3CF95002B0428 /* Stack_Exchange_NotifierTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Stack_Exchange_NotifierTests.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		3735B1B514D3CF94002B0428 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3735B1BD14D3CF94002B0428 /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3735B1D514D3CF95002B0428 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3735B1DB14D3CF95002B0428 /* SenTestingKit.framework in Frameworks */,
+				3735B1DC14D3CF95002B0428 /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		3735B1AD14D3CF94002B0428 = {
+			isa = PBXGroup;
+			children = (
+				3735B1C214D3CF94002B0428 /* Stack Exchange Notifier */,
+				3735B1DF14D3CF95002B0428 /* Stack Exchange NotifierTests */,
+				3735B1BB14D3CF94002B0428 /* Frameworks */,
+				3735B1B914D3CF94002B0428 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		3735B1B914D3CF94002B0428 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				3735B1B814D3CF94002B0428 /* Stack Exchange Notifier.app */,
+				3735B1D914D3CF95002B0428 /* Stack Exchange NotifierTests.octest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		3735B1BB14D3CF94002B0428 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				3735B1BC14D3CF94002B0428 /* Cocoa.framework */,
+				3735B1DA14D3CF95002B0428 /* SenTestingKit.framework */,
+				3735B1BE14D3CF94002B0428 /* Other Frameworks */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		3735B1BE14D3CF94002B0428 /* Other Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				3735B1BF14D3CF94002B0428 /* AppKit.framework */,
+				3735B1C014D3CF94002B0428 /* CoreData.framework */,
+				3735B1C114D3CF94002B0428 /* Foundation.framework */,
+			);
+			name = "Other Frameworks";
+			sourceTree = "<group>";
+		};
+		3735B1C214D3CF94002B0428 /* Stack Exchange Notifier */ = {
+			isa = PBXGroup;
+			children = (
+				3735B1CE14D3CF95002B0428 /* Stack_Exchange_NotifierAppDelegate.h */,
+				3735B1CF14D3CF95002B0428 /* Stack_Exchange_NotifierAppDelegate.m */,
+				3735B1D114D3CF95002B0428 /* MainMenu.xib */,
+				3735B1C314D3CF94002B0428 /* Supporting Files */,
+			);
+			path = "Stack Exchange Notifier";
+			sourceTree = "<group>";
+		};
+		3735B1C314D3CF94002B0428 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				3735B1C414D3CF94002B0428 /* Stack Exchange Notifier-Info.plist */,
+				3735B1C514D3CF94002B0428 /* InfoPlist.strings */,
+				3735B1C814D3CF94002B0428 /* main.m */,
+				3735B1CA14D3CF95002B0428 /* Stack Exchange Notifier-Prefix.pch */,
+				3735B1CB14D3CF95002B0428 /* Credits.rtf */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		3735B1DF14D3CF95002B0428 /* Stack Exchange NotifierTests */ = {
+			isa = PBXGroup;
+			children = (
+				3735B1E514D3CF95002B0428 /* Stack_Exchange_NotifierTests.h */,
+				3735B1E714D3CF95002B0428 /* Stack_Exchange_NotifierTests.m */,
+				3735B1E014D3CF95002B0428 /* Supporting Files */,
+			);
+			path = "Stack Exchange NotifierTests";
+			sourceTree = "<group>";
+		};
+		3735B1E014D3CF95002B0428 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				3735B1E114D3CF95002B0428 /* Stack Exchange NotifierTests-Info.plist */,
+				3735B1E214D3CF95002B0428 /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		3735B1B714D3CF94002B0428 /* Stack Exchange Notifier */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3735B1EB14D3CF95002B0428 /* Build configuration list for PBXNativeTarget "Stack Exchange Notifier" */;
+			buildPhases = (
+				3735B1B414D3CF94002B0428 /* Sources */,
+				3735B1B514D3CF94002B0428 /* Frameworks */,
+				3735B1B614D3CF94002B0428 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Stack Exchange Notifier";
+			productName = "Stack Exchange Notifier";
+			productReference = 3735B1B814D3CF94002B0428 /* Stack Exchange Notifier.app */;
+			productType = "com.apple.product-type.application";
+		};
+		3735B1D814D3CF95002B0428 /* Stack Exchange NotifierTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3735B1EE14D3CF95002B0428 /* Build configuration list for PBXNativeTarget "Stack Exchange NotifierTests" */;
+			buildPhases = (
+				3735B1D414D3CF95002B0428 /* Sources */,
+				3735B1D514D3CF95002B0428 /* Frameworks */,
+				3735B1D614D3CF95002B0428 /* Resources */,
+				3735B1D714D3CF95002B0428 /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				3735B1DE14D3CF95002B0428 /* PBXTargetDependency */,
+			);
+			name = "Stack Exchange NotifierTests";
+			productName = "Stack Exchange NotifierTests";
+			productReference = 3735B1D914D3CF95002B0428 /* Stack Exchange NotifierTests.octest */;
+			productType = "com.apple.product-type.bundle";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		3735B1AF14D3CF94002B0428 /* Project object */ = {
+			isa = PBXProject;
+			buildConfigurationList = 3735B1B214D3CF94002B0428 /* Build configuration list for PBXProject "Stack Exchange Notifier" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 3735B1AD14D3CF94002B0428;
+			productRefGroup = 3735B1B914D3CF94002B0428 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				3735B1B714D3CF94002B0428 /* Stack Exchange Notifier */,
+				3735B1D814D3CF95002B0428 /* Stack Exchange NotifierTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		3735B1B614D3CF94002B0428 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3735B1C714D3CF94002B0428 /* InfoPlist.strings in Resources */,
+				3735B1CD14D3CF95002B0428 /* Credits.rtf in Resources */,
+				3735B1D314D3CF95002B0428 /* MainMenu.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3735B1D614D3CF95002B0428 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3735B1E414D3CF95002B0428 /* InfoPlist.strings in Resources */,
+				3735B1E614D3CF95002B0428 /* Stack_Exchange_NotifierTests.h in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		3735B1D714D3CF95002B0428 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		3735B1B414D3CF94002B0428 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3735B1C914D3CF94002B0428 /* main.m in Sources */,
+				3735B1D014D3CF95002B0428 /* Stack_Exchange_NotifierAppDelegate.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3735B1D414D3CF95002B0428 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3735B1E814D3CF95002B0428 /* Stack_Exchange_NotifierTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		3735B1DE14D3CF95002B0428 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 3735B1B714D3CF94002B0428 /* Stack Exchange Notifier */;
+			targetProxy = 3735B1DD14D3CF95002B0428 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		3735B1C514D3CF94002B0428 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				3735B1C614D3CF94002B0428 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		3735B1CB14D3CF95002B0428 /* Credits.rtf */ = {
+			isa = PBXVariantGroup;
+			children = (
+				3735B1CC14D3CF95002B0428 /* en */,
+			);
+			name = Credits.rtf;
+			sourceTree = "<group>";
+		};
+		3735B1D114D3CF95002B0428 /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				3735B1D214D3CF95002B0428 /* en */,
+			);
+			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+		3735B1E214D3CF95002B0428 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				3735B1E314D3CF95002B0428 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		3735B1E914D3CF95002B0428 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		3735B1EA14D3CF95002B0428 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		3735B1EC14D3CF95002B0428 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Stack Exchange Notifier/Stack Exchange Notifier-Prefix.pch";
+				INFOPLIST_FILE = "Stack Exchange Notifier/Stack Exchange Notifier-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		3735B1ED14D3CF95002B0428 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Stack Exchange Notifier/Stack Exchange Notifier-Prefix.pch";
+				INFOPLIST_FILE = "Stack Exchange Notifier/Stack Exchange Notifier-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		3735B1EF14D3CF95002B0428 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Stack Exchange Notifier.app/Contents/MacOS/Stack Exchange Notifier";
+				FRAMEWORK_SEARCH_PATHS = "$(DEVELOPER_LIBRARY_DIR)/Frameworks";
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Stack Exchange Notifier/Stack Exchange Notifier-Prefix.pch";
+				INFOPLIST_FILE = "Stack Exchange NotifierTests/Stack Exchange NotifierTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Debug;
+		};
+		3735B1F014D3CF95002B0428 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Stack Exchange Notifier.app/Contents/MacOS/Stack Exchange Notifier";
+				FRAMEWORK_SEARCH_PATHS = "$(DEVELOPER_LIBRARY_DIR)/Frameworks";
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Stack Exchange Notifier/Stack Exchange Notifier-Prefix.pch";
+				INFOPLIST_FILE = "Stack Exchange NotifierTests/Stack Exchange NotifierTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		3735B1B214D3CF94002B0428 /* Build configuration list for PBXProject "Stack Exchange Notifier" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3735B1E914D3CF95002B0428 /* Debug */,
+				3735B1EA14D3CF95002B0428 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3735B1EB14D3CF95002B0428 /* Build configuration list for PBXNativeTarget "Stack Exchange Notifier" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3735B1EC14D3CF95002B0428 /* Debug */,
+				3735B1ED14D3CF95002B0428 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		3735B1EE14D3CF95002B0428 /* Build configuration list for PBXNativeTarget "Stack Exchange NotifierTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3735B1EF14D3CF95002B0428 /* Debug */,
+				3735B1F014D3CF95002B0428 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 3735B1AF14D3CF94002B0428 /* Project object */;
+}
