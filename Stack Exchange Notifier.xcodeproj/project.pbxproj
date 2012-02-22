@@ -364,7 +364,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "set -e\n\ndmg=\"$BUILT_PRODUCTS_DIR/`echo $PROJECT_NAME | tr A-Z' ' a-z-`.dmg\"\nhdiutil create -srcfolder \"$BUILT_PRODUCTS_DIR/$PROJECT_NAME.app\" $dmg\ncp $dmg ~/docs/hewgill.com/senotifier/";
+			shellScript = "set -e\n\ndmg=\"$BUILT_PRODUCTS_DIR/`echo $PROJECT_NAME | tr A-Z' ' a-z-`.dmg\"\nrm $dmg\nhdiutil create -srcfolder \"$BUILT_PRODUCTS_DIR/$PROJECT_NAME.app\" $dmg\ncp $dmg ~/docs/hewgill.com/senotifier/";
 		};
 /* End PBXShellScriptBuildPhase section */
 
