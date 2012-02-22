@@ -585,6 +585,7 @@
 				37F9D60614DFC7B100DA4B70 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
