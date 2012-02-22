@@ -152,7 +152,7 @@ void setMenuItemTitle(NSMenuItem *menuitem, NSDictionary *msg, bool highlight)
     [menu addItem:[NSMenuItem separatorItem]];
     
     [menu addItem:[[NSMenuItem alloc] initWithTitle:@"Hide for 25 minutes" action:@selector(hideIcon) keyEquivalent:@""]];
-    [menu addItem:[[NSMenuItem alloc] initWithTitle:@"Invalidate" action:@selector(invalidate) keyEquivalent:@""]];
+    [menu addItem:[[NSMenuItem alloc] initWithTitle:@"Invalidate login token" action:@selector(invalidate) keyEquivalent:@""]];
     [menu addItem:[[NSMenuItem alloc] initWithTitle:@"Quit" action:@selector(quit) keyEquivalent:@""]];
 
     [self updateMenu];
@@ -204,6 +204,9 @@ void setMenuItemTitle(NSMenuItem *menuitem, NSDictionary *msg, bool highlight)
 
 -(void)checkInbox
 {
+    if (statusItem == nil) {
+        return;
+    }
     lastCheckError = nil;
     [self updateMenu];
     NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"https://api.stackexchange.com/2.0/inbox/unread?access_token=%@&key=%@&filter=withbody", access_token, CLIENT_KEY]]];
@@ -227,6 +230,7 @@ void setMenuItemTitle(NSMenuItem *menuitem, NSDictionary *msg, bool highlight)
 {
     statusItem = createStatusItem();
     [self resetMenu];
+    [self checkInbox];
 }
 
 -(void)invalidate
