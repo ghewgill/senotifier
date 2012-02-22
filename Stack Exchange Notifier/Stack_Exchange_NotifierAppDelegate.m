@@ -252,6 +252,7 @@ void setMenuItemTitle(NSMenuItem *menuitem, NSDictionary *msg, bool highlight)
     loginError = [error localizedDescription];
     [self updateMenu];
     [[NSAlert alertWithError:error] runModal];
+    [window setIsVisible:NO];
 }
 
 -(void)webView:(WebView *)sender didFailLoadWithError:(NSError *)error forFrame:(WebFrame *)frame
@@ -259,6 +260,7 @@ void setMenuItemTitle(NSMenuItem *menuitem, NSDictionary *msg, bool highlight)
     loginError = [error localizedDescription];
     [self updateMenu];
     [[NSAlert alertWithError:error] runModal];
+    //[window setIsVisible:NO];
 }
 
 -(void)webView:(WebView *)sender didFinishLoadForFrame:(WebFrame *)frame
