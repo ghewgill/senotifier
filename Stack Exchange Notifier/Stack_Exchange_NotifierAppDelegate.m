@@ -101,7 +101,7 @@ void setMenuItemTitle(NSMenuItem *menuitem, NSDictionary *msg, bool highlight)
     [menu addItem:[NSMenuItem separatorItem]];
     
     unsigned int unread = 0;
-    menuitems = [NSMutableArray arrayWithCapacity:[items count]];
+    targets = [NSMutableArray arrayWithCapacity:[items count]];
     if ([items count] > 0) {
         unsigned int i = 0;
         for (NSDictionary *obj in [items objectEnumerator]) {
@@ -112,9 +112,8 @@ void setMenuItemTitle(NSMenuItem *menuitem, NSDictionary *msg, bool highlight)
                 unread++;
             }
             IndirectTarget *t = [[IndirectTarget alloc] initWithArg:[NSNumber numberWithUnsignedInt:i] action:@selector(openUrlFromItem:) originalTarget:self];
-            [t performSelector:NSSelectorFromString(@"retain")]; // TODO: super hack, find somewhere to put these
+            [targets addObject:t];
             [it setTarget:t];
-            [menuitems addObject:it];
             [menu addItem:it];
             i++;
         }
@@ -242,13 +241,6 @@ void setMenuItemTitle(NSMenuItem *menuitem, NSDictionary *msg, bool highlight)
     }
     
     items = [r objectForKey:@"items"];
-    if (menuitems) {
-        NSEnumerator *e = [menuitems objectEnumerator];
-        NSMenuItem *it;
-        while (it = [e nextObject]) {
-            //[[it target] performSelector:NSSelectorFromString(@"release")];
-        }
-    }
     
     NSMutableArray *newReadItems = [[NSMutableArray alloc] initWithCapacity:[readItems count]];
     for (unsigned int i = 0; i < [readItems count]; i++) {
@@ -269,7 +261,6 @@ void setMenuItemTitle(NSMenuItem *menuitem, NSDictionary *msg, bool highlight)
     
     lastCheck = time(NULL);
     [self resetMenu];
-    //NSLog(@"received %@", [[NSString alloc] initWithData:receivedData encoding:NSUTF8StringEncoding]);
 }
 
 -(void)openUrlFromItem:(NSNumber *)index
@@ -283,7 +274,6 @@ void setMenuItemTitle(NSMenuItem *menuitem, NSDictionary *msg, bool highlight)
     readItems = r;
     [[NSUserDefaults standardUserDefaults] setObject:readItems forKey:DEFAULTS_KEY_READ_ITEMS];
     [self resetMenu];
-    //setMenuItemTitle([menuitems objectAtIndex:[index unsignedIntValue]], msg, false);
 }
 
 @end

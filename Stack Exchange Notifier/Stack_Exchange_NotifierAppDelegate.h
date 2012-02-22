@@ -20,7 +20,7 @@
     NSMutableData *receivedData;
     NSArray *readItems;
     NSArray *items;
-    NSMutableArray *menuitems;
+    NSMutableArray *targets;
     time_t lastCheck;
 }
 
