@@ -195,6 +195,16 @@ void setMenuItemTitle(NSMenuItem *menuitem, NSDictionary *msg, bool highlight)
     [NSApp terminate:self];
 }
 
+-(void)webView:(WebView *)sender didFailProvisionalLoadWithError:(NSError *)error forFrame:(WebFrame *)frame
+{
+    [[NSAlert alertWithError:error] runModal];
+}
+
+-(void)webView:(WebView *)sender didFailLoadWithError:(NSError *)error forFrame:(WebFrame *)frame
+{
+    [[NSAlert alertWithError:error] runModal];
+}
+
 -(void)webView:(WebView *)sender didFinishLoadForFrame:(WebFrame *)frame
 {
     NSURL *url = [[[frame dataSource] request] URL];
@@ -217,10 +227,14 @@ void setMenuItemTitle(NSMenuItem *menuitem, NSDictionary *msg, bool highlight)
     [self checkInbox];
 }
 
+-(void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error
+{
+    [[NSAlert alertWithError:error] runModal];
+}
+
 -(void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response
 {
     [receivedData setLength:0];
-    NSLog(@"receive response");
 }
 
 -(void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data
