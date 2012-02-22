@@ -21,7 +21,9 @@
     NSArray *readItems;
     NSArray *items;
     NSMutableArray *targets;
+    NSString *loginError;
     time_t lastCheck;
+    NSString *lastCheckError;
 }
 
 @property (unsafe_unretained) IBOutlet NSWindow *window;

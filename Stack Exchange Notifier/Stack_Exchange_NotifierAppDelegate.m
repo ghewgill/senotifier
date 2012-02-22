@@ -80,8 +80,26 @@ void setMenuItemTitle(NSMenuItem *menuitem, NSDictionary *msg, bool highlight)
     NSDictionary *normalattrs = [[NSDictionary alloc] initWithObjectsAndKeys:
         [NSFont menuBarFontOfSize:0.0], NSFontAttributeName,
         nil];
-    NSMutableAttributedString *at = [[NSMutableAttributedString alloc] initWithString:@"Check Now" attributes:normalattrs];
-    if (lastCheck) {
+    NSMutableAttributedString *at = [[NSMutableAttributedString alloc] initWithString:@"Log in" attributes:normalattrs];
+    if (loginError != nil) {
+        NSDictionary *redattrs = [[NSDictionary alloc] initWithObjectsAndKeys:
+            [NSFont menuBarFontOfSize:0.0], NSFontAttributeName,
+            [NSColor redColor], NSForegroundColorAttributeName,
+            nil];
+        [at appendAttributedString:[[NSAttributedString alloc] initWithString:@" - " attributes:redattrs]];
+        [at appendAttributedString:[[NSAttributedString alloc] initWithString:loginError attributes:redattrs]];
+    }
+    [[menu itemAtIndex:1] setAttributedTitle:at];
+    
+    at = [[NSMutableAttributedString alloc] initWithString:@"Check Now" attributes:normalattrs];
+    if (lastCheckError != nil) {
+        NSDictionary *redattrs = [[NSDictionary alloc] initWithObjectsAndKeys:
+            [NSFont menuBarFontOfSize:0.0], NSFontAttributeName,
+            [NSColor redColor], NSForegroundColorAttributeName,
+            nil];
+        [at appendAttributedString:[[NSAttributedString alloc] initWithString:@" - " attributes:redattrs]];
+        [at appendAttributedString:[[NSAttributedString alloc] initWithString:lastCheckError attributes:redattrs]];
+    } else if (lastCheck) {
         NSDictionary *grayattrs = [[NSDictionary alloc] initWithObjectsAndKeys:
             [NSFont menuBarFontOfSize:0.0], NSFontAttributeName,
             [NSColor grayColor], NSForegroundColorAttributeName,
@@ -146,6 +164,10 @@ void setMenuItemTitle(NSMenuItem *menuitem, NSDictionary *msg, bool highlight)
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
     lastCheck = 0;
+    loginError = nil;
+    lastCheckError = nil;
+    [self updateMenu];
+    
     readItems = [[NSUserDefaults standardUserDefaults] arrayForKey:DEFAULTS_KEY_READ_ITEMS];
 
     NSStatusBar *bar = [NSStatusBar systemStatusBar];
@@ -172,6 +194,8 @@ void setMenuItemTitle(NSMenuItem *menuitem, NSDictionary *msg, bool highlight)
 
 -(void)checkInbox
 {
+    lastCheckError = nil;
+    [self updateMenu];
     NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"https://api.stackexchange.com/2.0/inbox/unread?access_token=%@&key=%@&filter=withbody", access_token, CLIENT_KEY]]];
     NSURLConnection *conn = [[NSURLConnection alloc] initWithRequest:request delegate:self];
     if (conn) {
@@ -197,11 +221,15 @@ void setMenuItemTitle(NSMenuItem *menuitem, NSDictionary *msg, bool highlight)
 
 -(void)webView:(WebView *)sender didFailProvisionalLoadWithError:(NSError *)error forFrame:(WebFrame *)frame
 {
+    loginError = [error localizedDescription];
+    [self updateMenu];
     [[NSAlert alertWithError:error] runModal];
 }
 
 -(void)webView:(WebView *)sender didFailLoadWithError:(NSError *)error forFrame:(WebFrame *)frame
 {
+    loginError = [error localizedDescription];
+    [self updateMenu];
     [[NSAlert alertWithError:error] runModal];
 }
 
@@ -210,11 +238,13 @@ void setMenuItemTitle(NSMenuItem *menuitem, NSDictionary *msg, bool highlight)
     NSURL *url = [[[frame dataSource] request] URL];
     NSLog(@"finished loading %@", [url absoluteString]);
     if (![[url absoluteString] hasPrefix:@"https://stackexchange.com/oauth/login_success"]) {
+        loginError = @"Error logging in to Stack Exchange.";
         return;
     }
     NSString *fragment = [url fragment];
     NSRange r = [fragment rangeOfString:@"access_token="];
     if (r.location == NSNotFound) {
+        loginError = @"Access token not found on login.";
         return;
     }
     r.location += 13;
@@ -224,12 +254,15 @@ void setMenuItemTitle(NSMenuItem *menuitem, NSDictionary *msg, bool highlight)
     }
     access_token = [fragment substringWithRange:NSMakeRange(r.location, e.location - r.location)];
     [window setIsVisible:NO];
+    loginError = nil;
     [self checkInbox];
 }
 
 -(void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error
 {
-    [[NSAlert alertWithError:error] runModal];
+    lastCheckError = [error localizedDescription];
+    [self updateMenu];
+    //[[NSAlert alertWithError:error] runModal];
 }
 
 -(void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response
