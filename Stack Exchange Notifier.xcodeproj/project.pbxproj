@@ -6,11 +6,24 @@
 	objectVersion = 46;
 	objects = {
 
+/* Begin PBXAggregateTarget section */
+		37F9D60314DFC7B100DA4B70 /* Stack Exchange Notifier DMG */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = 37F9D60414DFC7B100DA4B70 /* Build configuration list for PBXAggregateTarget "Stack Exchange Notifier DMG" */;
+			buildPhases = (
+				37F9D60714DFC7D800DA4B70 /* ShellScript */,
+			);
+			dependencies = (
+			);
+			name = "Stack Exchange Notifier DMG";
+			productName = "Stack Exchange Notifier DMG";
+		};
+/* End PBXAggregateTarget section */
+
 /* Begin PBXBuildFile section */
 		3735B1BD14D3CF94002B0428 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3735B1BC14D3CF94002B0428 /* Cocoa.framework */; };
 		3735B1C714D3CF94002B0428 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3735B1C514D3CF94002B0428 /* InfoPlist.strings */; };
 		3735B1C914D3CF94002B0428 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 3735B1C814D3CF94002B0428 /* main.m */; };
-		3735B1CD14D3CF95002B0428 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 3735B1CB14D3CF95002B0428 /* Credits.rtf */; };
 		3735B1D014D3CF95002B0428 /* Stack_Exchange_NotifierAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3735B1CF14D3CF95002B0428 /* Stack_Exchange_NotifierAppDelegate.m */; };
 		3735B1D314D3CF95002B0428 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3735B1D114D3CF95002B0428 /* MainMenu.xib */; };
 		3735B1DB14D3CF95002B0428 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3735B1DA14D3CF95002B0428 /* SenTestingKit.framework */; };
@@ -18,6 +31,22 @@
 		3735B1E414D3CF95002B0428 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3735B1E214D3CF95002B0428 /* InfoPlist.strings */; };
 		3735B1E614D3CF95002B0428 /* Stack_Exchange_NotifierTests.h in Resources */ = {isa = PBXBuildFile; fileRef = 3735B1E514D3CF95002B0428 /* Stack_Exchange_NotifierTests.h */; };
 		3735B1E814D3CF95002B0428 /* Stack_Exchange_NotifierTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3735B1E714D3CF95002B0428 /* Stack_Exchange_NotifierTests.m */; };
+		3735B1F214D4B57A002B0428 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3735B1F114D4B57A002B0428 /* WebKit.framework */; };
+		3735B20D14D50BD6002B0428 /* NSObject+SBJson.m in Sources */ = {isa = PBXBuildFile; fileRef = 3735B1F514D50BD6002B0428 /* NSObject+SBJson.m */; };
+		3735B20E14D50BD6002B0428 /* SBJsonParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 3735B1F814D50BD6002B0428 /* SBJsonParser.m */; };
+		3735B20F14D50BD6002B0428 /* SBJsonStreamParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 3735B1FA14D50BD6002B0428 /* SBJsonStreamParser.m */; };
+		3735B21014D50BD6002B0428 /* SBJsonStreamParserAccumulator.m in Sources */ = {isa = PBXBuildFile; fileRef = 3735B1FC14D50BD6002B0428 /* SBJsonStreamParserAccumulator.m */; };
+		3735B21114D50BD6002B0428 /* SBJsonStreamParserAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = 3735B1FE14D50BD6002B0428 /* SBJsonStreamParserAdapter.m */; };
+		3735B21214D50BD6002B0428 /* SBJsonStreamParserState.m in Sources */ = {isa = PBXBuildFile; fileRef = 3735B20014D50BD6002B0428 /* SBJsonStreamParserState.m */; };
+		3735B21314D50BD6002B0428 /* SBJsonStreamWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = 3735B20214D50BD6002B0428 /* SBJsonStreamWriter.m */; };
+		3735B21414D50BD6002B0428 /* SBJsonStreamWriterAccumulator.m in Sources */ = {isa = PBXBuildFile; fileRef = 3735B20414D50BD6002B0428 /* SBJsonStreamWriterAccumulator.m */; };
+		3735B21514D50BD6002B0428 /* SBJsonStreamWriterState.m in Sources */ = {isa = PBXBuildFile; fileRef = 3735B20614D50BD6002B0428 /* SBJsonStreamWriterState.m */; };
+		3735B21614D50BD6002B0428 /* SBJsonTokeniser.m in Sources */ = {isa = PBXBuildFile; fileRef = 3735B20814D50BD6002B0428 /* SBJsonTokeniser.m */; };
+		3735B21714D50BD6002B0428 /* SBJsonUTF8Stream.m in Sources */ = {isa = PBXBuildFile; fileRef = 3735B20A14D50BD6002B0428 /* SBJsonUTF8Stream.m */; };
+		3735B21814D50BD6002B0428 /* SBJsonWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = 3735B20C14D50BD6002B0428 /* SBJsonWriter.m */; };
+		37F9D5FE14D5F39C00DA4B70 /* NSString+html.m in Sources */ = {isa = PBXBuildFile; fileRef = 37F9D5FD14D5F39C00DA4B70 /* NSString+html.m */; };
+		37F9D60014D9113C00DA4B70 /* favicon.ico in Resources */ = {isa = PBXBuildFile; fileRef = 37F9D5FF14D9113C00DA4B70 /* favicon.ico */; };
+		37F9D60214DA7D2300DA4B70 /* Credits.html in Resources */ = {isa = PBXBuildFile; fileRef = 37F9D60114DA7D2300DA4B70 /* Credits.html */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,20 +65,49 @@
 		3735B1BF14D3CF94002B0428 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
 		3735B1C014D3CF94002B0428 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		3735B1C114D3CF94002B0428 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		3735B1C414D3CF94002B0428 /* Stack Exchange Notifier-Info.plist */ = {isa = PBXFileReference; path = "Stack Exchange Notifier-Info.plist"; sourceTree = "<group>"; };
+		3735B1C414D3CF94002B0428 /* Stack Exchange Notifier-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Stack Exchange Notifier-Info.plist"; sourceTree = "<group>"; };
 		3735B1C614D3CF94002B0428 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		3735B1C814D3CF94002B0428 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		3735B1CA14D3CF95002B0428 /* Stack Exchange Notifier-Prefix.pch */ = {isa = PBXFileReference; path = "Stack Exchange Notifier-Prefix.pch"; sourceTree = "<group>"; };
-		3735B1CC14D3CF95002B0428 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = en.lproj/Credits.rtf; sourceTree = "<group>"; };
-		3735B1CE14D3CF95002B0428 /* Stack_Exchange_NotifierAppDelegate.h */ = {isa = PBXFileReference; path = Stack_Exchange_NotifierAppDelegate.h; sourceTree = "<group>"; };
+		3735B1CA14D3CF95002B0428 /* Stack Exchange Notifier-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Stack Exchange Notifier-Prefix.pch"; sourceTree = "<group>"; };
+		3735B1CE14D3CF95002B0428 /* Stack_Exchange_NotifierAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Stack_Exchange_NotifierAppDelegate.h; sourceTree = "<group>"; };
 		3735B1CF14D3CF95002B0428 /* Stack_Exchange_NotifierAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Stack_Exchange_NotifierAppDelegate.m; sourceTree = "<group>"; };
 		3735B1D214D3CF95002B0428 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		3735B1D914D3CF95002B0428 /* Stack Exchange NotifierTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Stack Exchange NotifierTests.octest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3735B1DA14D3CF95002B0428 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
-		3735B1E114D3CF95002B0428 /* Stack Exchange NotifierTests-Info.plist */ = {isa = PBXFileReference; path = "Stack Exchange NotifierTests-Info.plist"; sourceTree = "<group>"; };
+		3735B1E114D3CF95002B0428 /* Stack Exchange NotifierTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Stack Exchange NotifierTests-Info.plist"; sourceTree = "<group>"; };
 		3735B1E314D3CF95002B0428 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		3735B1E514D3CF95002B0428 /* Stack_Exchange_NotifierTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Stack_Exchange_NotifierTests.h; sourceTree = "<group>"; };
 		3735B1E714D3CF95002B0428 /* Stack_Exchange_NotifierTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Stack_Exchange_NotifierTests.m; sourceTree = "<group>"; };
+		3735B1F114D4B57A002B0428 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
+		3735B1F414D50BD6002B0428 /* NSObject+SBJson.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+SBJson.h"; sourceTree = "<group>"; };
+		3735B1F514D50BD6002B0428 /* NSObject+SBJson.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+SBJson.m"; sourceTree = "<group>"; };
+		3735B1F614D50BD6002B0428 /* SBJson.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJson.h; sourceTree = "<group>"; };
+		3735B1F714D50BD6002B0428 /* SBJsonParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonParser.h; sourceTree = "<group>"; };
+		3735B1F814D50BD6002B0428 /* SBJsonParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonParser.m; sourceTree = "<group>"; };
+		3735B1F914D50BD6002B0428 /* SBJsonStreamParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonStreamParser.h; sourceTree = "<group>"; };
+		3735B1FA14D50BD6002B0428 /* SBJsonStreamParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonStreamParser.m; sourceTree = "<group>"; };
+		3735B1FB14D50BD6002B0428 /* SBJsonStreamParserAccumulator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonStreamParserAccumulator.h; sourceTree = "<group>"; };
+		3735B1FC14D50BD6002B0428 /* SBJsonStreamParserAccumulator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonStreamParserAccumulator.m; sourceTree = "<group>"; };
+		3735B1FD14D50BD6002B0428 /* SBJsonStreamParserAdapter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonStreamParserAdapter.h; sourceTree = "<group>"; };
+		3735B1FE14D50BD6002B0428 /* SBJsonStreamParserAdapter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonStreamParserAdapter.m; sourceTree = "<group>"; };
+		3735B1FF14D50BD6002B0428 /* SBJsonStreamParserState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonStreamParserState.h; sourceTree = "<group>"; };
+		3735B20014D50BD6002B0428 /* SBJsonStreamParserState.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonStreamParserState.m; sourceTree = "<group>"; };
+		3735B20114D50BD6002B0428 /* SBJsonStreamWriter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonStreamWriter.h; sourceTree = "<group>"; };
+		3735B20214D50BD6002B0428 /* SBJsonStreamWriter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonStreamWriter.m; sourceTree = "<group>"; };
+		3735B20314D50BD6002B0428 /* SBJsonStreamWriterAccumulator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonStreamWriterAccumulator.h; sourceTree = "<group>"; };
+		3735B20414D50BD6002B0428 /* SBJsonStreamWriterAccumulator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonStreamWriterAccumulator.m; sourceTree = "<group>"; };
+		3735B20514D50BD6002B0428 /* SBJsonStreamWriterState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonStreamWriterState.h; sourceTree = "<group>"; };
+		3735B20614D50BD6002B0428 /* SBJsonStreamWriterState.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonStreamWriterState.m; sourceTree = "<group>"; };
+		3735B20714D50BD6002B0428 /* SBJsonTokeniser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonTokeniser.h; sourceTree = "<group>"; };
+		3735B20814D50BD6002B0428 /* SBJsonTokeniser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonTokeniser.m; sourceTree = "<group>"; };
+		3735B20914D50BD6002B0428 /* SBJsonUTF8Stream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonUTF8Stream.h; sourceTree = "<group>"; };
+		3735B20A14D50BD6002B0428 /* SBJsonUTF8Stream.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonUTF8Stream.m; sourceTree = "<group>"; };
+		3735B20B14D50BD6002B0428 /* SBJsonWriter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonWriter.h; sourceTree = "<group>"; };
+		3735B20C14D50BD6002B0428 /* SBJsonWriter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonWriter.m; sourceTree = "<group>"; };
+		37F9D5FC14D5F39C00DA4B70 /* NSString+html.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+html.h"; sourceTree = "<group>"; };
+		37F9D5FD14D5F39C00DA4B70 /* NSString+html.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+html.m"; sourceTree = "<group>"; };
+		37F9D5FF14D9113C00DA4B70 /* favicon.ico */ = {isa = PBXFileReference; lastKnownFileType = image.ico; path = favicon.ico; sourceTree = "<group>"; };
+		37F9D60114DA7D2300DA4B70 /* Credits.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = Credits.html; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,6 +115,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3735B1F214D4B57A002B0428 /* WebKit.framework in Frameworks */,
 				3735B1BD14D3CF94002B0428 /* Cocoa.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -95,6 +154,7 @@
 		3735B1BB14D3CF94002B0428 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				3735B1F114D4B57A002B0428 /* WebKit.framework */,
 				3735B1BC14D3CF94002B0428 /* Cocoa.framework */,
 				3735B1DA14D3CF95002B0428 /* SenTestingKit.framework */,
 				3735B1BE14D3CF94002B0428 /* Other Frameworks */,
@@ -115,8 +175,12 @@
 		3735B1C214D3CF94002B0428 /* Stack Exchange Notifier */ = {
 			isa = PBXGroup;
 			children = (
+				3735B1F314D50BAE002B0428 /* SBJson */,
 				3735B1CE14D3CF95002B0428 /* Stack_Exchange_NotifierAppDelegate.h */,
 				3735B1CF14D3CF95002B0428 /* Stack_Exchange_NotifierAppDelegate.m */,
+				37F9D5FF14D9113C00DA4B70 /* favicon.ico */,
+				37F9D5FC14D5F39C00DA4B70 /* NSString+html.h */,
+				37F9D5FD14D5F39C00DA4B70 /* NSString+html.m */,
 				3735B1D114D3CF95002B0428 /* MainMenu.xib */,
 				3735B1C314D3CF94002B0428 /* Supporting Files */,
 			);
@@ -130,7 +194,7 @@
 				3735B1C514D3CF94002B0428 /* InfoPlist.strings */,
 				3735B1C814D3CF94002B0428 /* main.m */,
 				3735B1CA14D3CF95002B0428 /* Stack Exchange Notifier-Prefix.pch */,
-				3735B1CB14D3CF95002B0428 /* Credits.rtf */,
+				37F9D60114DA7D2300DA4B70 /* Credits.html */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -152,6 +216,38 @@
 				3735B1E214D3CF95002B0428 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		3735B1F314D50BAE002B0428 /* SBJson */ = {
+			isa = PBXGroup;
+			children = (
+				3735B1F414D50BD6002B0428 /* NSObject+SBJson.h */,
+				3735B1F514D50BD6002B0428 /* NSObject+SBJson.m */,
+				3735B1F614D50BD6002B0428 /* SBJson.h */,
+				3735B1F714D50BD6002B0428 /* SBJsonParser.h */,
+				3735B1F814D50BD6002B0428 /* SBJsonParser.m */,
+				3735B1F914D50BD6002B0428 /* SBJsonStreamParser.h */,
+				3735B1FA14D50BD6002B0428 /* SBJsonStreamParser.m */,
+				3735B1FB14D50BD6002B0428 /* SBJsonStreamParserAccumulator.h */,
+				3735B1FC14D50BD6002B0428 /* SBJsonStreamParserAccumulator.m */,
+				3735B1FD14D50BD6002B0428 /* SBJsonStreamParserAdapter.h */,
+				3735B1FE14D50BD6002B0428 /* SBJsonStreamParserAdapter.m */,
+				3735B1FF14D50BD6002B0428 /* SBJsonStreamParserState.h */,
+				3735B20014D50BD6002B0428 /* SBJsonStreamParserState.m */,
+				3735B20114D50BD6002B0428 /* SBJsonStreamWriter.h */,
+				3735B20214D50BD6002B0428 /* SBJsonStreamWriter.m */,
+				3735B20314D50BD6002B0428 /* SBJsonStreamWriterAccumulator.h */,
+				3735B20414D50BD6002B0428 /* SBJsonStreamWriterAccumulator.m */,
+				3735B20514D50BD6002B0428 /* SBJsonStreamWriterState.h */,
+				3735B20614D50BD6002B0428 /* SBJsonStreamWriterState.m */,
+				3735B20714D50BD6002B0428 /* SBJsonTokeniser.h */,
+				3735B20814D50BD6002B0428 /* SBJsonTokeniser.m */,
+				3735B20914D50BD6002B0428 /* SBJsonUTF8Stream.h */,
+				3735B20A14D50BD6002B0428 /* SBJsonUTF8Stream.m */,
+				3735B20B14D50BD6002B0428 /* SBJsonWriter.h */,
+				3735B20C14D50BD6002B0428 /* SBJsonWriter.m */,
+			);
+			name = SBJson;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -198,6 +294,9 @@
 /* Begin PBXProject section */
 		3735B1AF14D3CF94002B0428 /* Project object */ = {
 			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0420;
+			};
 			buildConfigurationList = 3735B1B214D3CF94002B0428 /* Build configuration list for PBXProject "Stack Exchange Notifier" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
@@ -212,6 +311,7 @@
 			targets = (
 				3735B1B714D3CF94002B0428 /* Stack Exchange Notifier */,
 				3735B1D814D3CF95002B0428 /* Stack Exchange NotifierTests */,
+				37F9D60314DFC7B100DA4B70 /* Stack Exchange Notifier DMG */,
 			);
 		};
 /* End PBXProject section */
@@ -222,8 +322,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				3735B1C714D3CF94002B0428 /* InfoPlist.strings in Resources */,
-				3735B1CD14D3CF95002B0428 /* Credits.rtf in Resources */,
 				3735B1D314D3CF95002B0428 /* MainMenu.xib in Resources */,
+				37F9D60014D9113C00DA4B70 /* favicon.ico in Resources */,
+				37F9D60214DA7D2300DA4B70 /* Credits.html in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -252,6 +353,19 @@
 			shellPath = /bin/sh;
 			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
 		};
+		37F9D60714DFC7D800DA4B70 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "set -e\n\ndmg=\"$BUILT_PRODUCTS_DIR/`echo $PROJECT_NAME | tr A-Z' ' a-z-`.dmg\"\nhdiutil create -srcfolder \"$BUILT_PRODUCTS_DIR/$PROJECT_NAME.app\" $dmg\ncp $dmg ~/docs/hewgill.com/senotifier/";
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -261,6 +375,19 @@
 			files = (
 				3735B1C914D3CF94002B0428 /* main.m in Sources */,
 				3735B1D014D3CF95002B0428 /* Stack_Exchange_NotifierAppDelegate.m in Sources */,
+				3735B20D14D50BD6002B0428 /* NSObject+SBJson.m in Sources */,
+				3735B20E14D50BD6002B0428 /* SBJsonParser.m in Sources */,
+				3735B20F14D50BD6002B0428 /* SBJsonStreamParser.m in Sources */,
+				3735B21014D50BD6002B0428 /* SBJsonStreamParserAccumulator.m in Sources */,
+				3735B21114D50BD6002B0428 /* SBJsonStreamParserAdapter.m in Sources */,
+				3735B21214D50BD6002B0428 /* SBJsonStreamParserState.m in Sources */,
+				3735B21314D50BD6002B0428 /* SBJsonStreamWriter.m in Sources */,
+				3735B21414D50BD6002B0428 /* SBJsonStreamWriterAccumulator.m in Sources */,
+				3735B21514D50BD6002B0428 /* SBJsonStreamWriterState.m in Sources */,
+				3735B21614D50BD6002B0428 /* SBJsonTokeniser.m in Sources */,
+				3735B21714D50BD6002B0428 /* SBJsonUTF8Stream.m in Sources */,
+				3735B21814D50BD6002B0428 /* SBJsonWriter.m in Sources */,
+				37F9D5FE14D5F39C00DA4B70 /* NSString+html.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -289,14 +416,6 @@
 				3735B1C614D3CF94002B0428 /* en */,
 			);
 			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
-		3735B1CB14D3CF95002B0428 /* Credits.rtf */ = {
-			isa = PBXVariantGroup;
-			children = (
-				3735B1CC14D3CF95002B0428 /* en */,
-			);
-			name = Credits.rtf;
 			sourceTree = "<group>";
 		};
 		3735B1D114D3CF95002B0428 /* MainMenu.xib */ = {
@@ -366,6 +485,7 @@
 		3735B1EC14D3CF95002B0428 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_OBJC_ARC = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Stack Exchange Notifier/Stack Exchange Notifier-Prefix.pch";
 				INFOPLIST_FILE = "Stack Exchange Notifier/Stack Exchange Notifier-Info.plist";
@@ -377,6 +497,7 @@
 		3735B1ED14D3CF95002B0428 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_OBJC_ARC = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Stack Exchange Notifier/Stack Exchange Notifier-Prefix.pch";
 				INFOPLIST_FILE = "Stack Exchange Notifier/Stack Exchange Notifier-Info.plist";
@@ -413,6 +534,20 @@
 			};
 			name = Release;
 		};
+		37F9D60514DFC7B100DA4B70 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		37F9D60614DFC7B100DA4B70 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -432,12 +567,22 @@
 				3735B1ED14D3CF95002B0428 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		3735B1EE14D3CF95002B0428 /* Build configuration list for PBXNativeTarget "Stack Exchange NotifierTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				3735B1EF14D3CF95002B0428 /* Debug */,
 				3735B1F014D3CF95002B0428 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		37F9D60414DFC7B100DA4B70 /* Build configuration list for PBXAggregateTarget "Stack Exchange Notifier DMG" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				37F9D60514DFC7B100DA4B70 /* Debug */,
+				37F9D60614DFC7B100DA4B70 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 		};

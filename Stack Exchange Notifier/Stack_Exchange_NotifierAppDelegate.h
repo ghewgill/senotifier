@@ -7,11 +7,23 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import <WebKit/WebKit.h>
 
 @interface Stack_Exchange_NotifierAppDelegate : NSObject <NSApplicationDelegate> {
-    NSWindow *window;
+    NSWindow *__unsafe_unretained window;
+    NSTimer *menuUpdateTimer;
+    NSTimer *checkInboxTimer;
+    NSMenu *menu;
+    NSStatusItem *item;
+    WebView *web;
+    NSString *access_token;
+    NSMutableData *receivedData;
+    NSArray *readItems;
+    NSArray *items;
+    NSMutableArray *menuitems;
+    time_t lastCheck;
 }
 
-@property (assign) IBOutlet NSWindow *window;
+@property (unsafe_unretained) IBOutlet NSWindow *window;
 
 @end
