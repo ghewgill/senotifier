@@ -14,6 +14,7 @@ NSString *CLIENT_KEY = @"JBpdN2wRVnHTq9E*uuyTPQ((";
 NSString *DEFAULTS_KEY_READ_ITEMS = @"com.hewgill.senotifier.readitems";
 
 NSString *timeAgo(time_t t);
+NSStatusItem *createStatusItem(void);
 void setMenuItemTitle(NSMenuItem *menuitem, NSDictionary *msg, bool highlight);
 
 NSString *timeAgo(time_t t)
@@ -59,6 +60,15 @@ NSString *timeAgo(time_t t)
 }
 
 @end
+
+NSStatusItem *createStatusItem(void)
+{
+    NSStatusBar *bar = [NSStatusBar systemStatusBar];
+    NSStatusItem *item = [bar statusItemWithLength:NSVariableStatusItemLength];
+    [item setImage:[[NSImage alloc] initByReferencingFile:[[NSBundle mainBundle] pathForResource:@"favicon.ico" ofType:nil]]];
+    [item setHighlightMode:YES];
+    return item;
+}
 
 void setMenuItemTitle(NSMenuItem *menuitem, NSDictionary *msg, bool highlight)
 {
@@ -141,17 +151,20 @@ void setMenuItemTitle(NSMenuItem *menuitem, NSDictionary *msg, bool highlight)
     
     [menu addItem:[NSMenuItem separatorItem]];
     
+    [menu addItem:[[NSMenuItem alloc] initWithTitle:@"Hide for 25 minutes" action:@selector(hideIcon) keyEquivalent:@""]];
     [menu addItem:[[NSMenuItem alloc] initWithTitle:@"Invalidate" action:@selector(invalidate) keyEquivalent:@""]];
     [menu addItem:[[NSMenuItem alloc] initWithTitle:@"Quit" action:@selector(quit) keyEquivalent:@""]];
 
     [self updateMenu];
     
-    if (unread > 0) {
-        [item setTitle:[NSString stringWithFormat:@"%u", unread]];
-    } else {
-        [item setTitle:nil];
+    if (statusItem != nil) {
+        if (unread > 0) {
+            [statusItem setTitle:[NSString stringWithFormat:@"%u", unread]];
+        } else {
+            [statusItem setTitle:nil];
+        }
+        [statusItem setMenu:menu];
     }
-    [item setMenu:menu];
 }
 
 -(void)doLogin
@@ -170,10 +183,7 @@ void setMenuItemTitle(NSMenuItem *menuitem, NSDictionary *msg, bool highlight)
     
     readItems = [[NSUserDefaults standardUserDefaults] arrayForKey:DEFAULTS_KEY_READ_ITEMS];
 
-    NSStatusBar *bar = [NSStatusBar systemStatusBar];
-    item = [bar statusItemWithLength:NSVariableStatusItemLength];
-    [item setImage:[[NSImage alloc] initByReferencingFile:[[NSBundle mainBundle] pathForResource:@"favicon.ico" ofType:nil]]];
-    [item setHighlightMode:YES];
+    statusItem = createStatusItem();
     [self resetMenu];
 
     web = [[WebView alloc] initWithFrame:[window frame]];
@@ -203,6 +213,20 @@ void setMenuItemTitle(NSMenuItem *menuitem, NSDictionary *msg, bool highlight)
     } else {
         NSLog(@"failed to create connection");
     }
+}
+
+-(void)hideIcon
+{
+    NSStatusBar *bar = [NSStatusBar systemStatusBar];
+    [bar removeStatusItem:statusItem];
+    statusItem = nil;
+    [NSTimer scheduledTimerWithTimeInterval:25*60 target:self selector:@selector(showIcon) userInfo:nil repeats:NO];
+}
+
+-(void)showIcon
+{
+    statusItem = createStatusItem();
+    [self resetMenu];
 }
 
 -(void)invalidate

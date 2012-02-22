@@ -14,7 +14,7 @@
     NSTimer *menuUpdateTimer;
     NSTimer *checkInboxTimer;
     NSMenu *menu;
-    NSStatusItem *item;
+    NSStatusItem *statusItem;
     WebView *web;
     NSString *access_token;
     NSMutableData *receivedData;
