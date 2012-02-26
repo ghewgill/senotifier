@@ -26,11 +26,6 @@
 		3735B1C914D3CF94002B0428 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 3735B1C814D3CF94002B0428 /* main.m */; };
 		3735B1D014D3CF95002B0428 /* Stack_Exchange_NotifierAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3735B1CF14D3CF95002B0428 /* Stack_Exchange_NotifierAppDelegate.m */; };
 		3735B1D314D3CF95002B0428 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3735B1D114D3CF95002B0428 /* MainMenu.xib */; };
-		3735B1DB14D3CF95002B0428 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3735B1DA14D3CF95002B0428 /* SenTestingKit.framework */; };
-		3735B1DC14D3CF95002B0428 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3735B1BC14D3CF94002B0428 /* Cocoa.framework */; };
-		3735B1E414D3CF95002B0428 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3735B1E214D3CF95002B0428 /* InfoPlist.strings */; };
-		3735B1E614D3CF95002B0428 /* Stack_Exchange_NotifierTests.h in Resources */ = {isa = PBXBuildFile; fileRef = 3735B1E514D3CF95002B0428 /* Stack_Exchange_NotifierTests.h */; };
-		3735B1E814D3CF95002B0428 /* Stack_Exchange_NotifierTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3735B1E714D3CF95002B0428 /* Stack_Exchange_NotifierTests.m */; };
 		3735B1F214D4B57A002B0428 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3735B1F114D4B57A002B0428 /* WebKit.framework */; };
 		3735B20D14D50BD6002B0428 /* NSObject+SBJson.m in Sources */ = {isa = PBXBuildFile; fileRef = 3735B1F514D50BD6002B0428 /* NSObject+SBJson.m */; };
 		3735B20E14D50BD6002B0428 /* SBJsonParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 3735B1F814D50BD6002B0428 /* SBJsonParser.m */; };
@@ -49,16 +44,6 @@
 		37F9D60214DA7D2300DA4B70 /* Credits.html in Resources */ = {isa = PBXBuildFile; fileRef = 37F9D60114DA7D2300DA4B70 /* Credits.html */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXContainerItemProxy section */
-		3735B1DD14D3CF95002B0428 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 3735B1AF14D3CF94002B0428 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 3735B1B714D3CF94002B0428;
-			remoteInfo = "Stack Exchange Notifier";
-		};
-/* End PBXContainerItemProxy section */
-
 /* Begin PBXFileReference section */
 		3735B1B814D3CF94002B0428 /* Stack Exchange Notifier.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Stack Exchange Notifier.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3735B1BC14D3CF94002B0428 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
@@ -72,12 +57,7 @@
 		3735B1CE14D3CF95002B0428 /* Stack_Exchange_NotifierAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Stack_Exchange_NotifierAppDelegate.h; sourceTree = "<group>"; };
 		3735B1CF14D3CF95002B0428 /* Stack_Exchange_NotifierAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Stack_Exchange_NotifierAppDelegate.m; sourceTree = "<group>"; };
 		3735B1D214D3CF95002B0428 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
-		3735B1D914D3CF95002B0428 /* Stack Exchange NotifierTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Stack Exchange NotifierTests.octest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3735B1DA14D3CF95002B0428 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
-		3735B1E114D3CF95002B0428 /* Stack Exchange NotifierTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Stack Exchange NotifierTests-Info.plist"; sourceTree = "<group>"; };
-		3735B1E314D3CF95002B0428 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		3735B1E514D3CF95002B0428 /* Stack_Exchange_NotifierTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Stack_Exchange_NotifierTests.h; sourceTree = "<group>"; };
-		3735B1E714D3CF95002B0428 /* Stack_Exchange_NotifierTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Stack_Exchange_NotifierTests.m; sourceTree = "<group>"; };
 		3735B1F114D4B57A002B0428 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 		3735B1F414D50BD6002B0428 /* NSObject+SBJson.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+SBJson.h"; sourceTree = "<group>"; };
 		3735B1F514D50BD6002B0428 /* NSObject+SBJson.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+SBJson.m"; sourceTree = "<group>"; };
@@ -120,15 +100,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		3735B1D514D3CF95002B0428 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				3735B1DB14D3CF95002B0428 /* SenTestingKit.framework in Frameworks */,
-				3735B1DC14D3CF95002B0428 /* Cocoa.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -136,7 +107,6 @@
 			isa = PBXGroup;
 			children = (
 				3735B1C214D3CF94002B0428 /* Stack Exchange Notifier */,
-				3735B1DF14D3CF95002B0428 /* Stack Exchange NotifierTests */,
 				3735B1BB14D3CF94002B0428 /* Frameworks */,
 				3735B1B914D3CF94002B0428 /* Products */,
 			);
@@ -146,7 +116,6 @@
 			isa = PBXGroup;
 			children = (
 				3735B1B814D3CF94002B0428 /* Stack Exchange Notifier.app */,
-				3735B1D914D3CF95002B0428 /* Stack Exchange NotifierTests.octest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -195,25 +164,6 @@
 				3735B1C814D3CF94002B0428 /* main.m */,
 				3735B1CA14D3CF95002B0428 /* Stack Exchange Notifier-Prefix.pch */,
 				37F9D60114DA7D2300DA4B70 /* Credits.html */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		3735B1DF14D3CF95002B0428 /* Stack Exchange NotifierTests */ = {
-			isa = PBXGroup;
-			children = (
-				3735B1E514D3CF95002B0428 /* Stack_Exchange_NotifierTests.h */,
-				3735B1E714D3CF95002B0428 /* Stack_Exchange_NotifierTests.m */,
-				3735B1E014D3CF95002B0428 /* Supporting Files */,
-			);
-			path = "Stack Exchange NotifierTests";
-			sourceTree = "<group>";
-		};
-		3735B1E014D3CF95002B0428 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				3735B1E114D3CF95002B0428 /* Stack Exchange NotifierTests-Info.plist */,
-				3735B1E214D3CF95002B0428 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -270,25 +220,6 @@
 			productReference = 3735B1B814D3CF94002B0428 /* Stack Exchange Notifier.app */;
 			productType = "com.apple.product-type.application";
 		};
-		3735B1D814D3CF95002B0428 /* Stack Exchange NotifierTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 3735B1EE14D3CF95002B0428 /* Build configuration list for PBXNativeTarget "Stack Exchange NotifierTests" */;
-			buildPhases = (
-				3735B1D414D3CF95002B0428 /* Sources */,
-				3735B1D514D3CF95002B0428 /* Frameworks */,
-				3735B1D614D3CF95002B0428 /* Resources */,
-				3735B1D714D3CF95002B0428 /* ShellScript */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				3735B1DE14D3CF95002B0428 /* PBXTargetDependency */,
-			);
-			name = "Stack Exchange NotifierTests";
-			productName = "Stack Exchange NotifierTests";
-			productReference = 3735B1D914D3CF95002B0428 /* Stack Exchange NotifierTests.octest */;
-			productType = "com.apple.product-type.bundle";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -310,7 +241,6 @@
 			projectRoot = "";
 			targets = (
 				3735B1B714D3CF94002B0428 /* Stack Exchange Notifier */,
-				3735B1D814D3CF95002B0428 /* Stack Exchange NotifierTests */,
 				37F9D60314DFC7B100DA4B70 /* Stack Exchange Notifier DMG */,
 			);
 		};
@@ -328,31 +258,9 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		3735B1D614D3CF95002B0428 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				3735B1E414D3CF95002B0428 /* InfoPlist.strings in Resources */,
-				3735B1E614D3CF95002B0428 /* Stack_Exchange_NotifierTests.h in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		3735B1D714D3CF95002B0428 /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
-		};
 		37F9D60714DFC7D800DA4B70 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -391,23 +299,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		3735B1D414D3CF95002B0428 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				3735B1E814D3CF95002B0428 /* Stack_Exchange_NotifierTests.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		3735B1DE14D3CF95002B0428 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 3735B1B714D3CF94002B0428 /* Stack Exchange Notifier */;
-			targetProxy = 3735B1DD14D3CF95002B0428 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		3735B1C514D3CF94002B0428 /* InfoPlist.strings */ = {
@@ -424,14 +316,6 @@
 				3735B1D214D3CF95002B0428 /* en */,
 			);
 			name = MainMenu.xib;
-			sourceTree = "<group>";
-		};
-		3735B1E214D3CF95002B0428 /* InfoPlist.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				3735B1E314D3CF95002B0428 /* en */,
-			);
-			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -506,34 +390,6 @@
 			};
 			name = Release;
 		};
-		3735B1EF14D3CF95002B0428 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Stack Exchange Notifier.app/Contents/MacOS/Stack Exchange Notifier";
-				FRAMEWORK_SEARCH_PATHS = "$(DEVELOPER_LIBRARY_DIR)/Frameworks";
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Stack Exchange Notifier/Stack Exchange Notifier-Prefix.pch";
-				INFOPLIST_FILE = "Stack Exchange NotifierTests/Stack Exchange NotifierTests-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUNDLE_LOADER)";
-				WRAPPER_EXTENSION = octest;
-			};
-			name = Debug;
-		};
-		3735B1F014D3CF95002B0428 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Stack Exchange Notifier.app/Contents/MacOS/Stack Exchange Notifier";
-				FRAMEWORK_SEARCH_PATHS = "$(DEVELOPER_LIBRARY_DIR)/Frameworks";
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Stack Exchange Notifier/Stack Exchange Notifier-Prefix.pch";
-				INFOPLIST_FILE = "Stack Exchange NotifierTests/Stack Exchange NotifierTests-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUNDLE_LOADER)";
-				WRAPPER_EXTENSION = octest;
-			};
-			name = Release;
-		};
 		37F9D60514DFC7B100DA4B70 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -565,15 +421,6 @@
 			buildConfigurations = (
 				3735B1EC14D3CF95002B0428 /* Debug */,
 				3735B1ED14D3CF95002B0428 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		3735B1EE14D3CF95002B0428 /* Build configuration list for PBXNativeTarget "Stack Exchange NotifierTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				3735B1EF14D3CF95002B0428 /* Debug */,
-				3735B1F014D3CF95002B0428 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
