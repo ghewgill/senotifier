@@ -165,6 +165,12 @@ void setMenuItemTitle(NSMenuItem *menuitem, NSDictionary *msg, bool highlight)
             if (!read) {
                 unread++;
             }
+            NSImage *icon = [[NSImage alloc] initByReferencingURL:[[NSURL alloc] initWithString:[[obj objectForKey:@"site"] objectForKey:@"icon_url"]]];
+            NSSize size;
+            size.height = 24;
+            size.width = 24;
+            [icon setSize:size];
+            [it setImage:icon];
             IndirectTarget *t = [[IndirectTarget alloc] initWithArg:[NSNumber numberWithUnsignedInt:i] action:@selector(openUrlFromItem:) originalTarget:self];
             // must store the IndirectTarget somewhere to retain it, because
             // NSMenuItem won't do that for us
