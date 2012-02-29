@@ -14,6 +14,8 @@
 // (don't use this one, register to get your own
 // at http://stackapps.com/apps/oauth/register )
 NSString *CLIENT_KEY = @"JBpdN2wRVnHTq9E*uuyTPQ((";
+// Name of key to store all items in defaults
+NSString *DEFAULTS_KEY_ALL_ITEMS = @"com.hewgill.senotifier.allitems";
 // Name of key to store read items in defaults
 NSString *DEFAULTS_KEY_READ_ITEMS = @"com.hewgill.senotifier.readitems";
 
@@ -222,8 +224,13 @@ void setMenuItemTitle(NSMenuItem *menuitem, NSDictionary *msg, bool highlight)
     loginError = nil;
     lastCheckError = nil;
 
+    // read the list of all items from defaults
+    allItems = [[NSUserDefaults standardUserDefaults] arrayForKey:DEFAULTS_KEY_ALL_ITEMS];
     // read the list of items already read from defaults
     readItems = [[NSUserDefaults standardUserDefaults] arrayForKey:DEFAULTS_KEY_READ_ITEMS];
+
+    // register ourselves with growl
+    [GrowlApplicationBridge setGrowlDelegate:self];    
 
     // create the status bar item
     statusItem = createStatusItem();
@@ -403,6 +410,25 @@ void setMenuItemTitle(NSMenuItem *menuitem, NSDictionary *msg, bool highlight)
     
     // Get the unread inbox items according to the server.
     items = [r objectForKey:@"items"];
+
+    // First copy all server items into our local copy, notifying for each new one
+    NSMutableArray *newAllItems = [[NSMutableArray alloc] initWithCapacity:[items count]];
+    for (NSDictionary *item in [items objectEnumerator]) {
+        NSString *link = [item objectForKey:@"link"];
+        if (![allItems containsObject:link]) {
+            [GrowlApplicationBridge
+                notifyWithTitle:[[item objectForKey:@"site"] objectForKey:@"name"]
+                description:[[item objectForKey:@"body"] stringByDecodingXMLEntities]
+                notificationName:@"NewInbox"
+                iconData:[NSData alloc]
+                priority:0
+                isSticky:NO
+                clickContext:[item objectForKey:@"link"]];
+        }
+        [newAllItems addObject:link];
+    }
+    allItems = newAllItems;
+    [[NSUserDefaults standardUserDefaults] setObject:allItems forKey:DEFAULTS_KEY_ALL_ITEMS];
     
     // We only need to keep the "read" items in our local defaults
     // list for those items where the server still thinks they're
@@ -448,6 +474,22 @@ void setMenuItemTitle(NSMenuItem *menuitem, NSDictionary *msg, bool highlight)
     [[NSUserDefaults standardUserDefaults] setObject:readItems forKey:DEFAULTS_KEY_READ_ITEMS];
     // Update the menu since we now have one fewer unread item
     [self resetMenu];
+}
+
+-(NSString *)applicationNameForGrowl
+{
+    return @"Stack Exchange Notifier";
+}
+
+// Selector called by growl when item is clicked
+-(void)growlNotificationWasClicked:(id)clickContext
+{
+    NSString *link = clickContext;
+    for (unsigned int i = 0; i < [items count]; i++) {
+        if ([link compare:[[items objectAtIndex:i] objectForKey:@"link"]] == NSOrderedSame) {
+            [self openUrlFromItem:[NSNumber numberWithUnsignedInt:i]];
+        }
+    }
 }
 
 @end

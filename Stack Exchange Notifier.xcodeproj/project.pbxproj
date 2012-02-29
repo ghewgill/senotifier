@@ -39,10 +39,26 @@
 		3735B21614D50BD6002B0428 /* SBJsonTokeniser.m in Sources */ = {isa = PBXBuildFile; fileRef = 3735B20814D50BD6002B0428 /* SBJsonTokeniser.m */; };
 		3735B21714D50BD6002B0428 /* SBJsonUTF8Stream.m in Sources */ = {isa = PBXBuildFile; fileRef = 3735B20A14D50BD6002B0428 /* SBJsonUTF8Stream.m */; };
 		3735B21814D50BD6002B0428 /* SBJsonWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = 3735B20C14D50BD6002B0428 /* SBJsonWriter.m */; };
+		37F54B5814FD4ECD003F4E0D /* Growl Registration Ticket.growlRegDict in Resources */ = {isa = PBXBuildFile; fileRef = 37F54B5714FD4ECD003F4E0D /* Growl Registration Ticket.growlRegDict */; };
+		37F54B5A14FE9F70003F4E0D /* Growl.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 37F54B5914FE9F70003F4E0D /* Growl.framework */; };
+		37F54B5B14FE9F8E003F4E0D /* Growl.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 37F54B5914FE9F70003F4E0D /* Growl.framework */; };
 		37F9D5FE14D5F39C00DA4B70 /* NSString+html.m in Sources */ = {isa = PBXBuildFile; fileRef = 37F9D5FD14D5F39C00DA4B70 /* NSString+html.m */; };
 		37F9D60014D9113C00DA4B70 /* favicon.ico in Resources */ = {isa = PBXBuildFile; fileRef = 37F9D5FF14D9113C00DA4B70 /* favicon.ico */; };
 		37F9D60214DA7D2300DA4B70 /* Credits.html in Resources */ = {isa = PBXBuildFile; fileRef = 37F9D60114DA7D2300DA4B70 /* Credits.html */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		37F54B5514FCD8A2003F4E0D /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				37F54B5B14FE9F8E003F4E0D /* Growl.framework in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		3735B1B814D3CF94002B0428 /* Stack Exchange Notifier.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Stack Exchange Notifier.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -84,6 +100,8 @@
 		3735B20A14D50BD6002B0428 /* SBJsonUTF8Stream.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonUTF8Stream.m; sourceTree = "<group>"; };
 		3735B20B14D50BD6002B0428 /* SBJsonWriter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonWriter.h; sourceTree = "<group>"; };
 		3735B20C14D50BD6002B0428 /* SBJsonWriter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonWriter.m; sourceTree = "<group>"; };
+		37F54B5714FD4ECD003F4E0D /* Growl Registration Ticket.growlRegDict */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "Growl Registration Ticket.growlRegDict"; sourceTree = "<group>"; };
+		37F54B5914FE9F70003F4E0D /* Growl.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Growl.framework; sourceTree = "<group>"; };
 		37F9D5FC14D5F39C00DA4B70 /* NSString+html.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+html.h"; sourceTree = "<group>"; };
 		37F9D5FD14D5F39C00DA4B70 /* NSString+html.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+html.m"; sourceTree = "<group>"; };
 		37F9D5FF14D9113C00DA4B70 /* favicon.ico */ = {isa = PBXFileReference; lastKnownFileType = image.ico; path = favicon.ico; sourceTree = "<group>"; };
@@ -97,6 +115,7 @@
 			files = (
 				3735B1F214D4B57A002B0428 /* WebKit.framework in Frameworks */,
 				3735B1BD14D3CF94002B0428 /* Cocoa.framework in Frameworks */,
+				37F54B5A14FE9F70003F4E0D /* Growl.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -123,6 +142,7 @@
 		3735B1BB14D3CF94002B0428 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				37F54B5914FE9F70003F4E0D /* Growl.framework */,
 				3735B1F114D4B57A002B0428 /* WebKit.framework */,
 				3735B1BC14D3CF94002B0428 /* Cocoa.framework */,
 				3735B1DA14D3CF95002B0428 /* SenTestingKit.framework */,
@@ -164,6 +184,7 @@
 				3735B1C814D3CF94002B0428 /* main.m */,
 				3735B1CA14D3CF95002B0428 /* Stack Exchange Notifier-Prefix.pch */,
 				37F9D60114DA7D2300DA4B70 /* Credits.html */,
+				37F54B5714FD4ECD003F4E0D /* Growl Registration Ticket.growlRegDict */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -210,6 +231,7 @@
 				3735B1B414D3CF94002B0428 /* Sources */,
 				3735B1B514D3CF94002B0428 /* Frameworks */,
 				3735B1B614D3CF94002B0428 /* Resources */,
+				37F54B5514FCD8A2003F4E0D /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -255,6 +277,7 @@
 				3735B1D314D3CF95002B0428 /* MainMenu.xib in Resources */,
 				37F9D60014D9113C00DA4B70 /* favicon.ico in Resources */,
 				37F9D60214DA7D2300DA4B70 /* Credits.html in Resources */,
+				37F54B5814FD4ECD003F4E0D /* Growl Registration Ticket.growlRegDict in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -370,6 +393,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_OBJC_ARC = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/Stack Exchange Notifier\"",
+					"\"$(SRCROOT)\"",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Stack Exchange Notifier/Stack Exchange Notifier-Prefix.pch";
 				INFOPLIST_FILE = "Stack Exchange Notifier/Stack Exchange Notifier-Info.plist";
@@ -382,6 +410,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_OBJC_ARC = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/Stack Exchange Notifier\"",
+					"\"$(SRCROOT)\"",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Stack Exchange Notifier/Stack Exchange Notifier-Prefix.pch";
 				INFOPLIST_FILE = "Stack Exchange Notifier/Stack Exchange Notifier-Info.plist";

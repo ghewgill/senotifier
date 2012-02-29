@@ -8,8 +8,9 @@
 
 #import <Cocoa/Cocoa.h>
 #import <WebKit/WebKit.h>
+#import "Growl/GrowlApplicationBridge.h"
 
-@interface Stack_Exchange_NotifierAppDelegate : NSObject <NSApplicationDelegate> {
+@interface Stack_Exchange_NotifierAppDelegate : NSObject <NSApplicationDelegate, GrowlApplicationBridgeDelegate> {
     NSWindow *__unsafe_unretained window;
     // Timer for periodically updating the menu ("checked n minutes ago")
     NSTimer *menuUpdateTimer;
@@ -25,6 +26,8 @@
     NSString *access_token;
     // Accumulated received data from an API request
     NSMutableData *receivedData;
+    // Array of all items that we've seen from the server
+    NSArray *allItems;
     // Array of items already marked as "read"
     NSArray *readItems;
     // Current unread items from the site
