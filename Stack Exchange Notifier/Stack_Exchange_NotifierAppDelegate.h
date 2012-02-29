@@ -40,6 +40,8 @@
     time_t lastCheck;
     // Error message if we got an error reading the inbox
     NSString *lastCheckError;
+    // Whether notifications are enabled
+    BOOL notificationsEnabled;
 }
 
 @property (unsafe_unretained) IBOutlet NSWindow *window;

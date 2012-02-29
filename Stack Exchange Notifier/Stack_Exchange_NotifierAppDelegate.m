@@ -18,6 +18,8 @@ NSString *CLIENT_KEY = @"JBpdN2wRVnHTq9E*uuyTPQ((";
 NSString *DEFAULTS_KEY_ALL_ITEMS = @"com.hewgill.senotifier.allitems";
 // Name of key to store read items in defaults
 NSString *DEFAULTS_KEY_READ_ITEMS = @"com.hewgill.senotifier.readitems";
+// Name of key to store notifications enabled flag
+NSString *DEFAULTS_KEY_NOTIFICATIONS_ENABLED = @"com.hewgill.senotifier.notifications";
 
 // Local function prototypes
 
@@ -187,6 +189,14 @@ void setMenuItemTitle(NSMenuItem *menuitem, NSDictionary *msg, bool highlight)
     
     [menu addItem:[NSMenuItem separatorItem]];
     
+    NSMenu *preferencesMenu = [[NSMenu alloc] initWithTitle:@""];
+    NSMenuItem *enableNotifications = [[NSMenuItem alloc] initWithTitle:@"Enable popup notifications (Growl)" action:@selector(changeNotifications) keyEquivalent:@""];
+    [enableNotifications setState:notificationsEnabled ? NSOnState : NSOffState];
+    [preferencesMenu addItem:enableNotifications];
+    NSMenuItem *preferences = [[NSMenuItem alloc] initWithTitle:@"Preferences" action:nil keyEquivalent:@""];
+    [menu addItem:preferences];
+    [menu setSubmenu:preferencesMenu forItem:preferences];
+    
     [menu addItem:[[NSMenuItem alloc] initWithTitle:@"Hide for 25 minutes" action:@selector(hideIcon) keyEquivalent:@""]];
     [menu addItem:[[NSMenuItem alloc] initWithTitle:@"Invalidate login token" action:@selector(invalidate) keyEquivalent:@""]];
     [menu addItem:[[NSMenuItem alloc] initWithTitle:@"Quit" action:@selector(quit) keyEquivalent:@""]];
@@ -228,6 +238,8 @@ void setMenuItemTitle(NSMenuItem *menuitem, NSDictionary *msg, bool highlight)
     allItems = [[NSUserDefaults standardUserDefaults] arrayForKey:DEFAULTS_KEY_ALL_ITEMS];
     // read the list of items already read from defaults
     readItems = [[NSUserDefaults standardUserDefaults] arrayForKey:DEFAULTS_KEY_READ_ITEMS];
+    // read notification enabled state
+    notificationsEnabled = [[NSUserDefaults standardUserDefaults] boolForKey:DEFAULTS_KEY_NOTIFICATIONS_ENABLED];
 
     // register ourselves with growl
     [GrowlApplicationBridge setGrowlDelegate:self];    
@@ -415,7 +427,7 @@ void setMenuItemTitle(NSMenuItem *menuitem, NSDictionary *msg, bool highlight)
     NSMutableArray *newAllItems = [[NSMutableArray alloc] initWithCapacity:[items count]];
     for (NSDictionary *item in [items objectEnumerator]) {
         NSString *link = [item objectForKey:@"link"];
-        if (![allItems containsObject:link]) {
+        if (notificationsEnabled && ![allItems containsObject:link]) {
             [GrowlApplicationBridge
                 notifyWithTitle:[[item objectForKey:@"site"] objectForKey:@"name"]
                 description:[[item objectForKey:@"body"] stringByDecodingXMLEntities]
@@ -490,6 +502,13 @@ void setMenuItemTitle(NSMenuItem *menuitem, NSDictionary *msg, bool highlight)
             [self openUrlFromItem:[NSNumber numberWithUnsignedInt:i]];
         }
     }
+}
+
+-(void)changeNotifications
+{
+    notificationsEnabled = !notificationsEnabled;
+    [[NSUserDefaults standardUserDefaults] setBool:notificationsEnabled forKey:DEFAULTS_KEY_NOTIFICATIONS_ENABLED];
+    [self resetMenu];
 }
 
 @end
