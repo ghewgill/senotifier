@@ -24,7 +24,7 @@ NSString *DEFAULTS_KEY_NOTIFICATIONS_ENABLED = @"com.hewgill.senotifier.notifica
 // Local function prototypes
 
 NSString *timeAgo(time_t t);
-NSStatusItem *createStatusItem(void);
+NSStatusItem *createStatusItem(NSImage* icon);
 void setMenuItemTitle(NSMenuItem *menuitem, NSDictionary *msg, bool highlight);
 
 // Simple implementation of "checked n minute(s)/hour(s) ago"
@@ -83,11 +83,11 @@ NSString *timeAgo(time_t t)
 
 // Create the status item when needed. Called on program startup or
 // when the icon is unhidden.
-NSStatusItem *createStatusItem(void)
+NSStatusItem *createStatusItem(NSImage* icon)
 {
     NSStatusBar *bar = [NSStatusBar systemStatusBar];
     NSStatusItem *item = [bar statusItemWithLength:NSVariableStatusItemLength];
-    [item setImage:[[NSImage alloc] initByReferencingFile:[[NSBundle mainBundle] pathForResource:@"favicon.ico" ofType:nil]]];
+    [item setImage:icon];
     [item setHighlightMode:YES];
     return item;
 }
@@ -208,8 +208,10 @@ void setMenuItemTitle(NSMenuItem *menuitem, NSDictionary *msg, bool highlight)
         // if there are any unread items, display that number on the status bar
         if (unread > 0) {
             [statusItem setTitle:[NSString stringWithFormat:@"%u", unread]];
+            [statusItem setImage:activeIcon];
         } else {
             [statusItem setTitle:nil];
+            [statusItem setImage:inactiveIcon];
         }
         [statusItem setMenu:menu];
     }
@@ -236,6 +238,15 @@ void setMenuItemTitle(NSMenuItem *menuitem, NSDictionary *msg, bool highlight)
 
     // read the list of all items from defaults
     allItems = [[NSUserDefaults standardUserDefaults] arrayForKey:DEFAULTS_KEY_ALL_ITEMS];
+
+    // setting icons
+    inactiveIcon = [[NSImage alloc] initByReferencingFile:[[NSBundle mainBundle]
+                                    pathForResource:@"favicon_inactive.ico" 
+                                    ofType:nil]];
+    activeIcon = [[NSImage alloc] initByReferencingFile:[[NSBundle mainBundle]
+                                  pathForResource:@"favicon.ico" 
+                                  ofType:nil]];
+
     // read the list of items already read from defaults
     readItems = [[NSUserDefaults standardUserDefaults] arrayForKey:DEFAULTS_KEY_READ_ITEMS];
     // read notification enabled state
@@ -245,7 +256,7 @@ void setMenuItemTitle(NSMenuItem *menuitem, NSDictionary *msg, bool highlight)
     [GrowlApplicationBridge setGrowlDelegate:self];    
 
     // create the status bar item
-    statusItem = createStatusItem();
+    statusItem = createStatusItem(inactiveIcon);
     [self resetMenu];
 
     // create the web view that we will use for login
@@ -304,7 +315,7 @@ void setMenuItemTitle(NSMenuItem *menuitem, NSDictionary *msg, bool highlight)
 // check for new inbox items straight away.
 -(void)showIcon
 {
-    statusItem = createStatusItem();
+    statusItem = createStatusItem(inactiveIcon);
     [self resetMenu];
     [self checkInbox];
 }

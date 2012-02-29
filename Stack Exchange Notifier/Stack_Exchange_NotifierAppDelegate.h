@@ -42,6 +42,10 @@
     NSString *lastCheckError;
     // Whether notifications are enabled
     BOOL notificationsEnabled;
+    // Icon when no messages
+    NSImage *inactiveIcon;
+    // Icon when 1+ messages
+    NSImage *activeIcon;
 }
 
 @property (unsafe_unretained) IBOutlet NSWindow *window;
