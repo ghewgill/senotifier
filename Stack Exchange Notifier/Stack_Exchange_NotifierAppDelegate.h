@@ -42,6 +42,8 @@
     NSString *lastCheckError;
     // Whether notifications are enabled
     BOOL notificationsEnabled;
+    // Default hide time (minutes)
+    long hideIconTime;
     // Icon when no messages
     NSImage *inactiveIcon;
     // Icon when 1+ messages

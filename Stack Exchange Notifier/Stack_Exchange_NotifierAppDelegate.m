@@ -20,29 +20,38 @@ NSString *DEFAULTS_KEY_ALL_ITEMS = @"com.hewgill.senotifier.allitems";
 NSString *DEFAULTS_KEY_READ_ITEMS = @"com.hewgill.senotifier.readitems";
 // Name of key to store notifications enabled flag
 NSString *DEFAULTS_KEY_NOTIFICATIONS_ENABLED = @"com.hewgill.senotifier.notifications";
+// Name of key to store hide icon time
+NSString *DEFAULTS_KEY_HIDE_ICON_TIME = @"com.hewgill.senotifier.hidetime";
 
 // Local function prototypes
 
+NSString *minutesToString(long minutes);
 NSString *timeAgo(time_t t);
 NSStatusItem *createStatusItem(NSImage* icon);
 void setMenuItemTitle(NSMenuItem *menuitem, NSDictionary *msg, bool highlight);
+
+// Format a number of minutes as a string
+NSString *minutesToString(long minutes)
+{
+    NSString *r;
+    if (minutes == 1) {
+        r = @"1 minute";
+    } else if (minutes < 60) {
+        r = [NSString stringWithFormat:@"%ld minutes", minutes];
+    } else if (minutes < 60*2) {
+        r = @"1 hour";
+    } else {
+        r = [NSString stringWithFormat:@"%ld hours", minutes / 60];
+    }
+    return r;
+}
 
 // Simple implementation of "checked n minute(s)/hour(s) ago"
 // for use in the menu
 NSString *timeAgo(time_t t)
 {
     long minutesago = (time(NULL) - t) / 60;
-    NSString *ago;
-    if (minutesago == 1) {
-        ago = @" - checked 1 minute ago";
-    } else if (minutesago < 60) {
-        ago = [NSString stringWithFormat:@" - checked %ld minutes ago", minutesago];
-    } else if (minutesago < 60*2) {
-        ago = @" - checked 1 hour ago";
-    } else {
-        ago = [NSString stringWithFormat:@" - checked %ld hours ago", minutesago / 60];
-    }
-    return ago;
+    return [NSString stringWithFormat:@" - checked %@ ago", minutesToString(minutesago)];
 }
 
 // IndirectTarget can be attached to a menu item (or anything that calls
@@ -197,7 +206,14 @@ void setMenuItemTitle(NSMenuItem *menuitem, NSDictionary *msg, bool highlight)
     [menu addItem:preferences];
     [menu setSubmenu:preferencesMenu forItem:preferences];
     
-    [menu addItem:[[NSMenuItem alloc] initWithTitle:@"Hide for 25 minutes" action:@selector(hideIcon) keyEquivalent:@""]];
+    NSMenu *hideMenu = [[NSMenu alloc] initWithTitle:@""];
+    [hideMenu addItem:[[NSMenuItem alloc] initWithTitle:@"25 minutes" action:@selector(hideIcon25) keyEquivalent:@""]];
+    [hideMenu addItem:[[NSMenuItem alloc] initWithTitle:@"1 hour" action:@selector(hideIcon60) keyEquivalent:@""]];
+    [hideMenu addItem:[[NSMenuItem alloc] initWithTitle:@"2 hours" action:@selector(hideIcon120) keyEquivalent:@""]];
+    [hideMenu addItem:[[NSMenuItem alloc] initWithTitle:@"4 hours" action:@selector(hideIcon240) keyEquivalent:@""]];
+    NSMenuItem *hide = [[NSMenuItem alloc] initWithTitle:[NSString stringWithFormat:@"Hide for %@", minutesToString(hideIconTime)] action:@selector(hideIcon) keyEquivalent:@""];
+    [menu addItem:hide];
+    [menu setSubmenu:hideMenu forItem:hide];
     [menu addItem:[[NSMenuItem alloc] initWithTitle:@"Invalidate login token" action:@selector(invalidate) keyEquivalent:@""]];
     [menu addItem:[[NSMenuItem alloc] initWithTitle:@"Quit" action:@selector(quit) keyEquivalent:@""]];
 
@@ -239,6 +255,18 @@ void setMenuItemTitle(NSMenuItem *menuitem, NSDictionary *msg, bool highlight)
     // read the list of all items from defaults
     allItems = [[NSUserDefaults standardUserDefaults] arrayForKey:DEFAULTS_KEY_ALL_ITEMS];
 
+    // read the list of items already read from defaults
+    readItems = [[NSUserDefaults standardUserDefaults] arrayForKey:DEFAULTS_KEY_READ_ITEMS];
+    
+    // read notification enabled state
+    notificationsEnabled = [[NSUserDefaults standardUserDefaults] boolForKey:DEFAULTS_KEY_NOTIFICATIONS_ENABLED];
+    
+    // read current hide time
+    hideIconTime = [[NSUserDefaults standardUserDefaults] integerForKey:DEFAULTS_KEY_HIDE_ICON_TIME];
+    if (hideIconTime <= 0) {
+        hideIconTime = 25;
+    }
+
     // setting icons
     inactiveIcon = [[NSImage alloc] initByReferencingFile:[[NSBundle mainBundle]
                                     pathForResource:@"favicon_inactive.ico" 
@@ -246,11 +274,6 @@ void setMenuItemTitle(NSMenuItem *menuitem, NSDictionary *msg, bool highlight)
     activeIcon = [[NSImage alloc] initByReferencingFile:[[NSBundle mainBundle]
                                   pathForResource:@"favicon.ico" 
                                   ofType:nil]];
-
-    // read the list of items already read from defaults
-    readItems = [[NSUserDefaults standardUserDefaults] arrayForKey:DEFAULTS_KEY_READ_ITEMS];
-    // read notification enabled state
-    notificationsEnabled = [[NSUserDefaults standardUserDefaults] boolForKey:DEFAULTS_KEY_NOTIFICATIONS_ENABLED];
 
     // register ourselves with growl
     [GrowlApplicationBridge setGrowlDelegate:self];    
@@ -308,8 +331,23 @@ void setMenuItemTitle(NSMenuItem *menuitem, NSDictionary *msg, bool highlight)
     NSStatusBar *bar = [NSStatusBar systemStatusBar];
     [bar removeStatusItem:statusItem];
     statusItem = nil;
-    [NSTimer scheduledTimerWithTimeInterval:25*60 target:self selector:@selector(showIcon) userInfo:nil repeats:NO];
+    [NSTimer scheduledTimerWithTimeInterval:hideIconTime*60
+             target:self
+             selector:@selector(showIcon)
+             userInfo:nil
+             repeats:NO];
 }
+
+-(void)hideIconSet:(long)newHideTime
+{
+    [[NSUserDefaults standardUserDefaults] setInteger:newHideTime forKey:DEFAULTS_KEY_HIDE_ICON_TIME];
+    [self hideIcon];
+}
+
+-(void)hideIcon25 { [self hideIconSet:25]; }
+-(void)hideIcon60 { [self hideIconSet:60]; }
+-(void)hideIcon120 { [self hideIconSet:120]; }
+-(void)hideIcon240 { [self hideIconSet:240]; }
 
 // Show the status icon after the hiding timeout and
 // check for new inbox items straight away.
