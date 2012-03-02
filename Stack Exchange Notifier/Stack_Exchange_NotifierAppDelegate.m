@@ -225,9 +225,11 @@ void setMenuItemTitle(NSMenuItem *menuitem, NSDictionary *msg, bool highlight)
         if (unread > 0) {
             [statusItem setTitle:[NSString stringWithFormat:@"%u", unread]];
             [statusItem setImage:activeIcon];
+            [statusItem setAlternateImage:nil];
         } else {
             [statusItem setTitle:nil];
             [statusItem setImage:inactiveIcon];
+            [statusItem setAlternateImage:inactiveIconAlt];
         }
         [statusItem setMenu:menu];
     }
@@ -271,6 +273,9 @@ void setMenuItemTitle(NSMenuItem *menuitem, NSDictionary *msg, bool highlight)
     inactiveIcon = [[NSImage alloc] initByReferencingFile:[[NSBundle mainBundle]
                                     pathForResource:@"favicon_inactive.ico" 
                                     ofType:nil]];
+    inactiveIconAlt = [[NSImage alloc] initByReferencingFile:[[NSBundle mainBundle]
+                                       pathForResource:@"favicon_inactive_alt.ico" 
+                                       ofType:nil]];
     activeIcon = [[NSImage alloc] initByReferencingFile:[[NSBundle mainBundle]
                                   pathForResource:@"favicon.ico" 
                                   ofType:nil]];

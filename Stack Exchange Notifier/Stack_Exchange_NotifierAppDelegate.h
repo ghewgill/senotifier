@@ -44,8 +44,9 @@
     BOOL notificationsEnabled;
     // Default hide time (minutes)
     long hideIconTime;
-    // Icon when no messages
+    // Icons when no messages
     NSImage *inactiveIcon;
+    NSImage *inactiveIconAlt;
     // Icon when 1+ messages
     NSImage *activeIcon;
 }

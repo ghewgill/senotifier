@@ -42,6 +42,7 @@
 		37F54B5814FD4ECD003F4E0D /* Growl Registration Ticket.growlRegDict in Resources */ = {isa = PBXBuildFile; fileRef = 37F54B5714FD4ECD003F4E0D /* Growl Registration Ticket.growlRegDict */; };
 		37F54B5A14FE9F70003F4E0D /* Growl.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 37F54B5914FE9F70003F4E0D /* Growl.framework */; };
 		37F54B5B14FE9F8E003F4E0D /* Growl.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 37F54B5914FE9F70003F4E0D /* Growl.framework */; };
+		37F54B621500ABD7003F4E0D /* favicon_inactive_alt.ico in Resources */ = {isa = PBXBuildFile; fileRef = 37F54B611500ABD7003F4E0D /* favicon_inactive_alt.ico */; };
 		37F9D5FE14D5F39C00DA4B70 /* NSString+html.m in Sources */ = {isa = PBXBuildFile; fileRef = 37F9D5FD14D5F39C00DA4B70 /* NSString+html.m */; };
 		37F9D60014D9113C00DA4B70 /* favicon.ico in Resources */ = {isa = PBXBuildFile; fileRef = 37F9D5FF14D9113C00DA4B70 /* favicon.ico */; };
 		37F9D60214DA7D2300DA4B70 /* Credits.html in Resources */ = {isa = PBXBuildFile; fileRef = 37F9D60114DA7D2300DA4B70 /* Credits.html */; };
@@ -103,6 +104,7 @@
 		3735B20C14D50BD6002B0428 /* SBJsonWriter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonWriter.m; sourceTree = "<group>"; };
 		37F54B5714FD4ECD003F4E0D /* Growl Registration Ticket.growlRegDict */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "Growl Registration Ticket.growlRegDict"; sourceTree = "<group>"; };
 		37F54B5914FE9F70003F4E0D /* Growl.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Growl.framework; sourceTree = "<group>"; };
+		37F54B611500ABD7003F4E0D /* favicon_inactive_alt.ico */ = {isa = PBXFileReference; lastKnownFileType = image.ico; path = favicon_inactive_alt.ico; sourceTree = "<group>"; };
 		37F9D5FC14D5F39C00DA4B70 /* NSString+html.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+html.h"; sourceTree = "<group>"; };
 		37F9D5FD14D5F39C00DA4B70 /* NSString+html.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+html.m"; sourceTree = "<group>"; };
 		37F9D5FF14D9113C00DA4B70 /* favicon.ico */ = {isa = PBXFileReference; lastKnownFileType = image.ico; path = favicon.ico; sourceTree = "<group>"; };
@@ -166,6 +168,7 @@
 		3735B1C214D3CF94002B0428 /* Stack Exchange Notifier */ = {
 			isa = PBXGroup;
 			children = (
+				37F54B611500ABD7003F4E0D /* favicon_inactive_alt.ico */,
 				3735B1F314D50BAE002B0428 /* SBJson */,
 				3735B1CE14D3CF95002B0428 /* Stack_Exchange_NotifierAppDelegate.h */,
 				3735B1CF14D3CF95002B0428 /* Stack_Exchange_NotifierAppDelegate.m */,
@@ -282,6 +285,7 @@
 				37F9D60214DA7D2300DA4B70 /* Credits.html in Resources */,
 				37F54B5814FD4ECD003F4E0D /* Growl Registration Ticket.growlRegDict in Resources */,
 				71663F5A14FEA7B000A6F81B /* favicon_inactive.ico in Resources */,
+				37F54B621500ABD7003F4E0D /* favicon_inactive_alt.ico in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
