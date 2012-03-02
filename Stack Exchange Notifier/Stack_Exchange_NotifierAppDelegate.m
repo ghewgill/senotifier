@@ -457,6 +457,11 @@ void setMenuItemTitle(NSMenuItem *menuitem, NSDictionary *msg, bool highlight)
 {
     // Parse the JSON response to the API request
     id r = [[[SBJsonParser alloc] init] objectWithData:receivedData];
+    if (r == nil) {
+        lastCheckError = @"JSON parse error";
+        [self updateMenu];
+        return;
+    }
     
     // Write the response to the log for debugging
     SBJsonWriter *w = [SBJsonWriter alloc];
@@ -465,7 +470,13 @@ void setMenuItemTitle(NSMenuItem *menuitem, NSDictionary *msg, bool highlight)
     
     // If we got an error, try logging in again.
     if ([r objectForKey:@"error_id"]) {
-        [self doLogin];
+        lastCheckError = [r objectForKey:@"error_name"];
+        // only auto-login if we got an expired access token (which is expected)
+        if ([lastCheckError compare:@"invalid_access_token"] == NSOrderedSame
+         && [(NSString *)[r objectForKey:@"error_message"] compare:@"expired"] == NSOrderedSame) {
+            [self doLogin];
+        }
+        [self updateMenu];
         return;
     }
     
