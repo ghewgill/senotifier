@@ -243,8 +243,9 @@ void setMenuItemTitle(NSMenuItem *menuitem, NSDictionary *msg, bool highlight)
     // this URL includes the
     //     client_id = 81 (specific to this application)
     //     scope = read_inbox (tell the user we want to read their inbox contents)
+    //             no_expiry (request a token with indefinite expiration date)
     //     redirect_uri = where to send the browser when authentication succeeds
-    [[web mainFrame] loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"https://stackexchange.com/oauth/dialog?client_id=81&scope=read_inbox&redirect_uri=https://stackexchange.com/oauth/login_success"]]];
+    [[web mainFrame] loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"https://stackexchange.com/oauth/dialog?client_id=81&scope=read_inbox,no_expiry&redirect_uri=https://stackexchange.com/oauth/login_success"]]];
 }
 
 // Initialise the application.
