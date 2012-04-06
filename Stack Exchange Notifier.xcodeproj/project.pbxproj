@@ -21,6 +21,7 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
+		37250416152F9D2100D5193A /* icon.icns in Resources */ = {isa = PBXBuildFile; fileRef = 37250415152F9D2100D5193A /* icon.icns */; };
 		3735B1BD14D3CF94002B0428 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3735B1BC14D3CF94002B0428 /* Cocoa.framework */; };
 		3735B1C714D3CF94002B0428 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3735B1C514D3CF94002B0428 /* InfoPlist.strings */; };
 		3735B1C914D3CF94002B0428 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 3735B1C814D3CF94002B0428 /* main.m */; };
@@ -63,6 +64,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		37250415152F9D2100D5193A /* icon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = icon.icns; sourceTree = "<group>"; };
 		3735B1B814D3CF94002B0428 /* Stack Exchange Notifier.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Stack Exchange Notifier.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3735B1BC14D3CF94002B0428 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		3735B1BF14D3CF94002B0428 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -172,6 +174,7 @@
 				3735B1F314D50BAE002B0428 /* SBJson */,
 				3735B1CE14D3CF95002B0428 /* Stack_Exchange_NotifierAppDelegate.h */,
 				3735B1CF14D3CF95002B0428 /* Stack_Exchange_NotifierAppDelegate.m */,
+				37250415152F9D2100D5193A /* icon.icns */,
 				71663F5914FEA7B000A6F81B /* favicon_inactive.ico */,
 				37F9D5FF14D9113C00DA4B70 /* favicon.ico */,
 				37F9D5FC14D5F39C00DA4B70 /* NSString+html.h */,
@@ -286,6 +289,7 @@
 				37F54B5814FD4ECD003F4E0D /* Growl Registration Ticket.growlRegDict in Resources */,
 				71663F5A14FEA7B000A6F81B /* favicon_inactive.ico in Resources */,
 				37F54B621500ABD7003F4E0D /* favicon_inactive_alt.ico in Resources */,
+				37250416152F9D2100D5193A /* icon.icns in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
