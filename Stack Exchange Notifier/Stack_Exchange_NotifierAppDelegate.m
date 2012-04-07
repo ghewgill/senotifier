@@ -90,6 +90,77 @@ NSString *timeAgo(time_t t)
 
 @end
 
+/*
+ * These two functions are based on
+ * http://stackoverflow.com/questions/815063/how-do-you-make-your-app-open-at-login
+ */
+static BOOL willStartAtLogin()
+{
+    NSURL *appurl = [NSURL fileURLWithPath:[[NSBundle mainBundle] bundlePath]];
+    BOOL found = NO;
+    LSSharedFileListRef items = LSSharedFileListCreate(NULL, kLSSharedFileListSessionLoginItems, NULL);
+    if (items) {
+        UInt32 seed;
+        CFArrayRef itemsArray = LSSharedFileListCopySnapshot(items, &seed);
+        CFIndex count = CFArrayGetCount(itemsArray);
+        for (CFIndex i = 0; i < count; i++) {
+            LSSharedFileListItemRef a = (LSSharedFileListItemRef)CFArrayGetValueAtIndex(itemsArray, i);
+            CFURLRef url = NULL;
+            OSStatus err = LSSharedFileListItemResolve(a, kLSSharedFileListNoUserInteraction | kLSSharedFileListDoNotMountVolumes, &url, NULL);
+            if (err == noErr) {
+                found = CFEqual(url, (__bridge CFURLRef)appurl);
+                CFRelease(url);
+                if (found) {
+                    break;
+                }
+            }
+        }
+        CFRelease(items);
+    }
+    return found;
+}
+
+static void setStartAtLogin(BOOL enabled)
+{
+    NSURL *appurl = [NSURL fileURLWithPath:[[NSBundle mainBundle] bundlePath]];
+    LSSharedFileListItemRef existing = NULL;
+    LSSharedFileListRef items = LSSharedFileListCreate(NULL, kLSSharedFileListSessionLoginItems, NULL);
+    if (items) {
+        UInt32 seed;
+        CFArrayRef itemsArray = LSSharedFileListCopySnapshot(items, &seed);
+        CFIndex count = CFArrayGetCount(itemsArray);
+        for (CFIndex i = 0; i < count; i++) {
+            LSSharedFileListItemRef a = (LSSharedFileListItemRef)CFArrayGetValueAtIndex(itemsArray, i);
+            CFURLRef url = NULL;
+            OSStatus err = LSSharedFileListItemResolve(a, kLSSharedFileListNoUserInteraction | kLSSharedFileListDoNotMountVolumes, &url, NULL);
+            if (err == noErr) {
+                BOOL found = CFEqual(url, (__bridge CFURLRef)appurl);
+                CFRelease(url);
+                if (found) {
+                    existing = a;
+                    break;
+                }
+            }
+        }
+        if (enabled && existing == NULL) {
+            LSSharedFileListItemRef item = LSSharedFileListInsertItemURL(
+                items,
+                kLSSharedFileListItemLast,
+                NULL,
+                NULL,
+                (__bridge CFURLRef)appurl,
+                NULL,
+                NULL);
+            if (item) {
+                CFRelease(item);
+            }
+        } else if (!enabled && existing != NULL) {
+            LSSharedFileListItemRemove(items, existing);
+        }
+        CFRelease(items);
+    }
+}
+
 // Create the status item when needed. Called on program startup or
 // when the icon is unhidden.
 NSStatusItem *createStatusItem(NSImage* icon)
@@ -202,6 +273,9 @@ void setMenuItemTitle(NSMenuItem *menuitem, NSDictionary *msg, bool highlight)
     NSMenuItem *enableNotifications = [[NSMenuItem alloc] initWithTitle:@"Enable popup notifications (Growl)" action:@selector(changeNotifications) keyEquivalent:@""];
     [enableNotifications setState:notificationsEnabled ? NSOnState : NSOffState];
     [preferencesMenu addItem:enableNotifications];
+    NSMenuItem *enableStartAtLogin = [[NSMenuItem alloc] initWithTitle:@"Start at login" action:@selector(changeStartAtLogin) keyEquivalent:@""];
+    [enableStartAtLogin setState:willStartAtLogin() ? NSOnState : NSOffState];
+    [preferencesMenu addItem:enableStartAtLogin];
     NSMenuItem *preferences = [[NSMenuItem alloc] initWithTitle:@"Preferences" action:nil keyEquivalent:@""];
     [menu addItem:preferences];
     [menu setSubmenu:preferencesMenu forItem:preferences];
@@ -574,6 +648,12 @@ void setMenuItemTitle(NSMenuItem *menuitem, NSDictionary *msg, bool highlight)
 {
     notificationsEnabled = !notificationsEnabled;
     [[NSUserDefaults standardUserDefaults] setBool:notificationsEnabled forKey:DEFAULTS_KEY_NOTIFICATIONS_ENABLED];
+    [self resetMenu];
+}
+
+-(void)changeStartAtLogin
+{
+    setStartAtLogin(!willStartAtLogin());
     [self resetMenu];
 }
 
