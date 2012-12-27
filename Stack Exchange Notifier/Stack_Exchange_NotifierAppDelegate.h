@@ -8,6 +8,7 @@
 
 #import <Cocoa/Cocoa.h>
 #import <WebKit/WebKit.h>
+#import <Foundation/Foundation.h>
 #import "Growl/GrowlApplicationBridge.h"
 
 @interface Stack_Exchange_NotifierAppDelegate : NSObject <NSApplicationDelegate, GrowlApplicationBridgeDelegate> {
@@ -42,6 +43,8 @@
     NSString *lastCheckError;
     // Whether notifications are enabled
     BOOL notificationsEnabled;
+    // Whether OS X notifications are enabled
+    BOOL osNotificationsEnabled;
     // Default hide time (minutes)
     long hideIconTime;
     // Icons when no messages

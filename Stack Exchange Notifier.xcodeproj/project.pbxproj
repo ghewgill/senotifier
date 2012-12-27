@@ -21,6 +21,7 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
+		2A9A5BDD168C7B07001DB4B1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A9A5BDC168C7B07001DB4B1 /* Foundation.framework */; };
 		37250416152F9D2100D5193A /* icon.icns in Resources */ = {isa = PBXBuildFile; fileRef = 37250415152F9D2100D5193A /* icon.icns */; };
 		3735B1BD14D3CF94002B0428 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3735B1BC14D3CF94002B0428 /* Cocoa.framework */; };
 		3735B1C714D3CF94002B0428 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3735B1C514D3CF94002B0428 /* InfoPlist.strings */; };
@@ -64,6 +65,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		2A9A5BDC168C7B07001DB4B1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 		37250415152F9D2100D5193A /* icon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = icon.icns; sourceTree = "<group>"; };
 		3735B1B814D3CF94002B0428 /* Stack Exchange Notifier.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Stack Exchange Notifier.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3735B1BC14D3CF94002B0428 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
@@ -119,6 +121,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2A9A5BDD168C7B07001DB4B1 /* Foundation.framework in Frameworks */,
 				3735B1F214D4B57A002B0428 /* WebKit.framework in Frameworks */,
 				3735B1BD14D3CF94002B0428 /* Cocoa.framework in Frameworks */,
 				37F54B5A14FE9F70003F4E0D /* Growl.framework in Frameworks */,
@@ -128,6 +131,26 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2A9A5BD9168C7A15001DB4B1 /* icons */ = {
+			isa = PBXGroup;
+			children = (
+				37F54B611500ABD7003F4E0D /* favicon_inactive_alt.ico */,
+				37250415152F9D2100D5193A /* icon.icns */,
+				71663F5914FEA7B000A6F81B /* favicon_inactive.ico */,
+				37F9D5FF14D9113C00DA4B70 /* favicon.ico */,
+			);
+			name = icons;
+			sourceTree = "<group>";
+		};
+		2A9A5BDB168C7A29001DB4B1 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				37F9D5FC14D5F39C00DA4B70 /* NSString+html.h */,
+				37F9D5FD14D5F39C00DA4B70 /* NSString+html.m */,
+			);
+			name = Utils;
+			sourceTree = "<group>";
+		};
 		3735B1AD14D3CF94002B0428 = {
 			isa = PBXGroup;
 			children = (
@@ -148,6 +171,7 @@
 		3735B1BB14D3CF94002B0428 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				2A9A5BDC168C7B07001DB4B1 /* Foundation.framework */,
 				37F54B5914FE9F70003F4E0D /* Growl.framework */,
 				3735B1F114D4B57A002B0428 /* WebKit.framework */,
 				3735B1BC14D3CF94002B0428 /* Cocoa.framework */,
@@ -170,15 +194,11 @@
 		3735B1C214D3CF94002B0428 /* Stack Exchange Notifier */ = {
 			isa = PBXGroup;
 			children = (
-				37F54B611500ABD7003F4E0D /* favicon_inactive_alt.ico */,
+				2A9A5BDB168C7A29001DB4B1 /* Utils */,
+				2A9A5BD9168C7A15001DB4B1 /* icons */,
 				3735B1F314D50BAE002B0428 /* SBJson */,
 				3735B1CE14D3CF95002B0428 /* Stack_Exchange_NotifierAppDelegate.h */,
 				3735B1CF14D3CF95002B0428 /* Stack_Exchange_NotifierAppDelegate.m */,
-				37250415152F9D2100D5193A /* icon.icns */,
-				71663F5914FEA7B000A6F81B /* favicon_inactive.ico */,
-				37F9D5FF14D9113C00DA4B70 /* favicon.ico */,
-				37F9D5FC14D5F39C00DA4B70 /* NSString+html.h */,
-				37F9D5FD14D5F39C00DA4B70 /* NSString+html.m */,
 				3735B1D114D3CF95002B0428 /* MainMenu.xib */,
 				3735B1C314D3CF94002B0428 /* Supporting Files */,
 			);
@@ -415,7 +435,7 @@
 				INFOPLIST_FILE = "Stack Exchange Notifier/Stack Exchange Notifier-Info.plist";
 				MACOSX_DEPLOYMENT_TARGET = 10.6;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = macosx10.7;
+				SDKROOT = macosx;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -434,7 +454,7 @@
 				INFOPLIST_FILE = "Stack Exchange Notifier/Stack Exchange Notifier-Info.plist";
 				MACOSX_DEPLOYMENT_TARGET = 10.6;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = macosx10.7;
+				SDKROOT = macosx;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
