@@ -20,6 +20,8 @@ NSString *DEFAULTS_KEY_ALL_ITEMS = @"com.hewgill.senotifier.allitems";
 NSString *DEFAULTS_KEY_READ_ITEMS = @"com.hewgill.senotifier.readitems";
 // Name of key to store notifications enabled flag
 NSString *DEFAULTS_KEY_NOTIFICATIONS_ENABLED = @"com.hewgill.senotifier.notifications";
+// Name of key to store notifications enabled flag
+NSString *DEFAULTS_KEY_OS_NOTIFICATIONS_ENABLED = @"com.hewgill.senotifier.osnotifications";
 // Name of key to store hide icon time
 NSString *DEFAULTS_KEY_HIDE_ICON_TIME = @"com.hewgill.senotifier.hidetime";
 
@@ -82,10 +84,10 @@ NSString *timeAgo(time_t t)
     // Turn off clang diagnostics because we're using performSelector here,
     // so ARC can't be sure we aren't calling retain or release.
     // (Don't try to do that.)
-    #pragma clang diagnostic push
-    #pragma clang diagnostic ignored "-Warc-performSelector-leaks"
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Warc-performSelector-leaks"
     [_originalTarget performSelector:_action withObject:_arg];
-    #pragma clang diagnostic pop
+#pragma clang diagnostic pop
 }
 
 @end
@@ -144,13 +146,13 @@ static void setStartAtLogin(BOOL enabled)
         }
         if (enabled && existing == NULL) {
             LSSharedFileListItemRef item = LSSharedFileListInsertItemURL(
-                items,
-                kLSSharedFileListItemLast,
-                NULL,
-                NULL,
-                (__bridge CFURLRef)appurl,
-                NULL,
-                NULL);
+                                                                         items,
+                                                                         kLSSharedFileListItemLast,
+                                                                         NULL,
+                                                                         NULL,
+                                                                         (__bridge CFURLRef)appurl,
+                                                                         NULL,
+                                                                         NULL);
             if (item) {
                 CFRelease(item);
             }
@@ -177,9 +179,9 @@ void setMenuItemTitle(NSMenuItem *menuitem, NSDictionary *msg, bool highlight)
 {
     NSFont *font = highlight ? [NSFont menuBarFontOfSize:0.0] : [NSFont menuBarFontOfSize:0.0];
     NSDictionary *attrs = [[NSDictionary alloc] initWithObjectsAndKeys:
-        font, NSFontAttributeName,
-        [NSNumber numberWithFloat:(highlight ? -4.0 : 0.0)], NSStrokeWidthAttributeName,
-        nil];
+                           font, NSFontAttributeName,
+                           [NSNumber numberWithFloat:(highlight ? -4.0 : 0.0)], NSStrokeWidthAttributeName,
+                           nil];
     NSAttributedString *at = [[NSAttributedString alloc] initWithString:[[msg objectForKey:@"body"] stringByDecodingXMLEntities] attributes:attrs];
     [menuitem setAttributedTitle:at];
 }
@@ -194,14 +196,14 @@ void setMenuItemTitle(NSMenuItem *menuitem, NSDictionary *msg, bool highlight)
 -(void)updateMenu
 {
     NSDictionary *normalattrs = [[NSDictionary alloc] initWithObjectsAndKeys:
-        [NSFont menuBarFontOfSize:0.0], NSFontAttributeName,
-        nil];
+                                 [NSFont menuBarFontOfSize:0.0], NSFontAttributeName,
+                                 nil];
     NSMutableAttributedString *at = [[NSMutableAttributedString alloc] initWithString:@"Log in" attributes:normalattrs];
     if (loginError != nil) {
         NSDictionary *redattrs = [[NSDictionary alloc] initWithObjectsAndKeys:
-            [NSFont menuBarFontOfSize:0.0], NSFontAttributeName,
-            [NSColor redColor], NSForegroundColorAttributeName,
-            nil];
+                                  [NSFont menuBarFontOfSize:0.0], NSFontAttributeName,
+                                  [NSColor redColor], NSForegroundColorAttributeName,
+                                  nil];
         [at appendAttributedString:[[NSAttributedString alloc] initWithString:@" - " attributes:redattrs]];
         [at appendAttributedString:[[NSAttributedString alloc] initWithString:loginError attributes:redattrs]];
     }
@@ -210,16 +212,16 @@ void setMenuItemTitle(NSMenuItem *menuitem, NSDictionary *msg, bool highlight)
     at = [[NSMutableAttributedString alloc] initWithString:@"Check Now" attributes:normalattrs];
     if (lastCheckError != nil) {
         NSDictionary *redattrs = [[NSDictionary alloc] initWithObjectsAndKeys:
-            [NSFont menuBarFontOfSize:0.0], NSFontAttributeName,
-            [NSColor redColor], NSForegroundColorAttributeName,
-            nil];
+                                  [NSFont menuBarFontOfSize:0.0], NSFontAttributeName,
+                                  [NSColor redColor], NSForegroundColorAttributeName,
+                                  nil];
         [at appendAttributedString:[[NSAttributedString alloc] initWithString:@" - " attributes:redattrs]];
         [at appendAttributedString:[[NSAttributedString alloc] initWithString:lastCheckError attributes:redattrs]];
     } else if (lastCheck) {
         NSDictionary *grayattrs = [[NSDictionary alloc] initWithObjectsAndKeys:
-            [NSFont menuBarFontOfSize:0.0], NSFontAttributeName,
-            [NSColor grayColor], NSForegroundColorAttributeName,
-            nil];
+                                   [NSFont menuBarFontOfSize:0.0], NSFontAttributeName,
+                                   [NSColor grayColor], NSForegroundColorAttributeName,
+                                   nil];
         [at appendAttributedString:[[NSAttributedString alloc] initWithString:timeAgo(lastCheck) attributes:grayattrs]];
     }
     [[menu itemAtIndex:2] setAttributedTitle:at];
@@ -270,6 +272,15 @@ void setMenuItemTitle(NSMenuItem *menuitem, NSDictionary *msg, bool highlight)
     [menu addItem:[NSMenuItem separatorItem]];
     
     NSMenu *preferencesMenu = [[NSMenu alloc] initWithTitle:@""];
+    
+    Class NSUserNotificationClass = NSClassFromString(@"NSUserNotification");
+    
+    if (NSUserNotificationClass) {
+        NSMenuItem *enableOSNotifications = [[NSMenuItem alloc] initWithTitle:@"Enable popup notifications (OS X)" action:@selector(changeOsNotifications) keyEquivalent:@""];
+        [enableOSNotifications setState:osNotificationsEnabled ? NSOnState : NSOffState];
+        [preferencesMenu addItem:enableOSNotifications];
+    }
+    
     NSMenuItem *enableNotifications = [[NSMenuItem alloc] initWithTitle:@"Enable popup notifications (Growl)" action:@selector(changeNotifications) keyEquivalent:@""];
     [enableNotifications setState:notificationsEnabled ? NSOnState : NSOffState];
     [preferencesMenu addItem:enableNotifications];
@@ -290,7 +301,7 @@ void setMenuItemTitle(NSMenuItem *menuitem, NSDictionary *msg, bool highlight)
     [menu setSubmenu:hideMenu forItem:hide];
     [menu addItem:[[NSMenuItem alloc] initWithTitle:@"Invalidate login token" action:@selector(invalidate) keyEquivalent:@""]];
     [menu addItem:[[NSMenuItem alloc] initWithTitle:@"Quit" action:@selector(quit) keyEquivalent:@""]];
-
+    
     // update annotations such as "checked n minutes ago"
     [self updateMenu];
     
@@ -328,48 +339,51 @@ void setMenuItemTitle(NSMenuItem *menuitem, NSDictionary *msg, bool highlight)
     lastCheck = 0;
     loginError = nil;
     lastCheckError = nil;
-
+    
     // read the list of all items from defaults
     allItems = [[NSUserDefaults standardUserDefaults] arrayForKey:DEFAULTS_KEY_ALL_ITEMS];
-
+    
     // read the list of items already read from defaults
     readItems = [[NSUserDefaults standardUserDefaults] arrayForKey:DEFAULTS_KEY_READ_ITEMS];
     
     // read notification enabled state
     notificationsEnabled = [[NSUserDefaults standardUserDefaults] boolForKey:DEFAULTS_KEY_NOTIFICATIONS_ENABLED];
     
+    // read OS notification enabled state
+    notificationsEnabled = [[NSUserDefaults standardUserDefaults] boolForKey:DEFAULTS_KEY_OS_NOTIFICATIONS_ENABLED];
+    
     // read current hide time
     hideIconTime = [[NSUserDefaults standardUserDefaults] integerForKey:DEFAULTS_KEY_HIDE_ICON_TIME];
     if (hideIconTime <= 0) {
         hideIconTime = 25;
     }
-
+    
     // setting icons
     inactiveIcon = [[NSImage alloc] initByReferencingFile:[[NSBundle mainBundle]
-                                    pathForResource:@"favicon_inactive.ico" 
-                                    ofType:nil]];
+                                                           pathForResource:@"favicon_inactive.ico"
+                                                           ofType:nil]];
     inactiveIconAlt = [[NSImage alloc] initByReferencingFile:[[NSBundle mainBundle]
-                                       pathForResource:@"favicon_inactive_alt.ico" 
-                                       ofType:nil]];
+                                                              pathForResource:@"favicon_inactive_alt.ico"
+                                                              ofType:nil]];
     activeIcon = [[NSImage alloc] initByReferencingFile:[[NSBundle mainBundle]
-                                  pathForResource:@"favicon.ico" 
-                                  ofType:nil]];
-
+                                                         pathForResource:@"favicon.ico"
+                                                         ofType:nil]];
+    
     // register ourselves with growl
-    [GrowlApplicationBridge setGrowlDelegate:self];    
-
+    [GrowlApplicationBridge setGrowlDelegate:self];
+    
     // create the status bar item
     statusItem = createStatusItem(inactiveIcon);
     [self resetMenu];
-
+    
     // create the web view that we will use for login
     web = [[WebView alloc] initWithFrame:[window frame]];
     [window setContentView:web];
     [web setFrameLoadDelegate:self];
-
+    
     // kick off a login procedure
     [self doLogin];
-
+    
     // set up the timers
     menuUpdateTimer = [NSTimer scheduledTimerWithTimeInterval:30 target:self selector:@selector(updateMenu) userInfo:nil repeats:YES];
     checkInboxTimer = [NSTimer scheduledTimerWithTimeInterval:300 target:self selector:@selector(checkInbox) userInfo:nil repeats:YES];
@@ -412,10 +426,10 @@ void setMenuItemTitle(NSMenuItem *menuitem, NSDictionary *msg, bool highlight)
     [bar removeStatusItem:statusItem];
     statusItem = nil;
     [NSTimer scheduledTimerWithTimeInterval:hideIconTime*60
-             target:self
-             selector:@selector(showIcon)
-             userInfo:nil
-             repeats:NO];
+                                     target:self
+                                   selector:@selector(showIcon)
+                                   userInfo:nil
+                                    repeats:NO];
 }
 
 -(void)hideIconSet:(long)newHideTime
@@ -553,7 +567,7 @@ void setMenuItemTitle(NSMenuItem *menuitem, NSDictionary *msg, bool highlight)
         lastCheckError = [r objectForKey:@"error_name"];
         // only auto-login if we got an expired access token (which is expected)
         if ([lastCheckError compare:@"invalid_access_token"] == NSOrderedSame
-         && [(NSString *)[r objectForKey:@"error_message"] compare:@"expired"] == NSOrderedSame) {
+            && [(NSString *)[r objectForKey:@"error_message"] compare:@"expired"] == NSOrderedSame) {
             [self doLogin];
         }
         [self updateMenu];
@@ -562,20 +576,36 @@ void setMenuItemTitle(NSMenuItem *menuitem, NSDictionary *msg, bool highlight)
     
     // Get the unread inbox items according to the server.
     items = [r objectForKey:@"items"];
-
+    
     // First copy all server items into our local copy, notifying for each new one
     NSMutableArray *newAllItems = [[NSMutableArray alloc] initWithCapacity:[items count]];
     for (NSDictionary *item in [items objectEnumerator]) {
         NSString *link = [item objectForKey:@"link"];
-        if (notificationsEnabled && ![allItems containsObject:link]) {
-            [GrowlApplicationBridge
-                notifyWithTitle:[[item objectForKey:@"site"] objectForKey:@"name"]
-                description:[[item objectForKey:@"body"] stringByDecodingXMLEntities]
-                notificationName:@"NewInbox"
-                iconData:[NSData alloc]
-                priority:0
-                isSticky:NO
-                clickContext:[item objectForKey:@"link"]];
+        if (![allItems containsObject:link]) {
+            if (notificationsEnabled) {
+                [GrowlApplicationBridge
+                 notifyWithTitle:[[item objectForKey:@"site"] objectForKey:@"name"]
+                 description:[[item objectForKey:@"body"] stringByDecodingXMLEntities]
+                 notificationName:@"NewInbox"
+                 iconData:[NSData alloc]
+                 priority:0
+                 isSticky:NO
+                 clickContext:[item objectForKey:@"link"]];
+            }
+            
+            Class NSUserNotificationClass = NSClassFromString(@"NSUserNotification");
+            
+            if (osNotificationsEnabled && NSUserNotificationClass) {
+                NSUserNotification *notification = [[NSUserNotification alloc] init];
+                notification.title = [[item objectForKey:@"site"] objectForKey:@"name"];
+                notification.informativeText = [[item objectForKey:@"body"] stringByDecodingXMLEntities];
+                notification.soundName = NSUserNotificationDefaultSoundName;
+
+                NSDictionary *userInfo = [[NSDictionary alloc] initWithObjectsAndKeys:[item objectForKey:@"link"], @"link", nil];
+                notification.userInfo = userInfo;
+                
+                [[NSUserNotificationCenter defaultUserNotificationCenter] deliverNotification:notification];
+            }
         }
         [newAllItems addObject:link];
     }
@@ -616,7 +646,11 @@ void setMenuItemTitle(NSMenuItem *menuitem, NSDictionary *msg, bool highlight)
     NSDictionary *msg = [items objectAtIndex:[index unsignedIntValue]];
     // Get the link for the item
     NSString *link = [msg objectForKey:@"link"];
-    NSLog(@"link %@", link);
+    
+    [self openLink:link];
+}
+
+- (void)openLink:(NSString*)link {
     // Open the link in the user's default browser
     [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:link]];
     // Add this item to our local read items list and store it
@@ -644,10 +678,25 @@ void setMenuItemTitle(NSMenuItem *menuitem, NSDictionary *msg, bool highlight)
     }
 }
 
+- (void)userNotificationCenter:(NSUserNotificationCenter *)center didActivateNotification:(NSUserNotification *)notification
+{
+    NSLog(@"Open link from notification!");
+    
+    NSString *link = [notification.userInfo objectForKey:@"link"];
+    [self openLink:link];
+}
+
 -(void)changeNotifications
 {
     notificationsEnabled = !notificationsEnabled;
     [[NSUserDefaults standardUserDefaults] setBool:notificationsEnabled forKey:DEFAULTS_KEY_NOTIFICATIONS_ENABLED];
+    [self resetMenu];
+}
+
+-(void)changeOsNotifications
+{
+    osNotificationsEnabled = !osNotificationsEnabled;
+    [[NSUserDefaults standardUserDefaults] setBool:osNotificationsEnabled forKey:DEFAULTS_KEY_OS_NOTIFICATIONS_ENABLED];
     [self resetMenu];
 }
 
