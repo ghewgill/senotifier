@@ -11,7 +11,7 @@
 #import <Foundation/Foundation.h>
 #import "Growl/GrowlApplicationBridge.h"
 
-@interface Stack_Exchange_NotifierAppDelegate : NSObject <NSApplicationDelegate, GrowlApplicationBridgeDelegate> {
+@interface Stack_Exchange_NotifierAppDelegate : NSObject <NSApplicationDelegate, GrowlApplicationBridgeDelegate, NSUserNotificationCenterDelegate> {
     NSWindow *__unsafe_unretained window;
     // Timer for periodically updating the menu ("checked n minutes ago")
     NSTimer *menuUpdateTimer;

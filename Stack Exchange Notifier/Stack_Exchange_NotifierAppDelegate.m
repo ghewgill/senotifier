@@ -379,6 +379,10 @@ void setMenuItemTitle(NSMenuItem *menuitem, NSDictionary *msg, bool highlight)
     web = [[WebView alloc] initWithFrame:[window frame]];
     [window setContentView:web];
     [web setFrameLoadDelegate:self];
+    
+    if (NSClassFromString(@"NSUserNotificationCenter")) {
+        [NSUserNotificationCenter defaultUserNotificationCenter].delegate = self;
+    }
 
     // kick off a login procedure
     [self doLogin];
