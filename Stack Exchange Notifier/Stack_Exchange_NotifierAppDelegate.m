@@ -683,6 +683,7 @@ void setMenuItemTitle(NSMenuItem *menuitem, NSDictionary *msg, bool highlight)
 {
     NSString *link = [notification.userInfo objectForKey:@"link"];
     [self openLink:link];
+    [[NSUserNotificationCenter defaultUserNotificationCenter] removeDeliveredNotification:notification];
 }
 
 -(void)changeNotifications
