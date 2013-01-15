@@ -20,6 +20,8 @@ NSString *DEFAULTS_KEY_ALL_ITEMS = @"com.hewgill.senotifier.allitems";
 NSString *DEFAULTS_KEY_READ_ITEMS = @"com.hewgill.senotifier.readitems";
 // Name of key to store notifications enabled flag
 NSString *DEFAULTS_KEY_NOTIFICATIONS_ENABLED = @"com.hewgill.senotifier.notifications";
+// Name of key to store notifications enabled flag
+NSString *DEFAULTS_KEY_OS_NOTIFICATIONS_ENABLED = @"com.hewgill.senotifier.osnotifications";
 // Name of key to store hide icon time
 NSString *DEFAULTS_KEY_HIDE_ICON_TIME = @"com.hewgill.senotifier.hidetime";
 
@@ -270,6 +272,14 @@ void setMenuItemTitle(NSMenuItem *menuitem, NSDictionary *msg, bool highlight)
     [menu addItem:[NSMenuItem separatorItem]];
     
     NSMenu *preferencesMenu = [[NSMenu alloc] initWithTitle:@""];
+    
+    Class NSUserNotificationClass = NSClassFromString(@"NSUserNotification");
+    if (NSUserNotificationClass) {
+        NSMenuItem *enableOSNotifications = [[NSMenuItem alloc] initWithTitle:@"Enable popup notifications (OS X)" action:@selector(changeOsNotifications) keyEquivalent:@""];
+        [enableOSNotifications setState:osNotificationsEnabled ? NSOnState : NSOffState];
+        [preferencesMenu addItem:enableOSNotifications];
+    }
+    
     NSMenuItem *enableNotifications = [[NSMenuItem alloc] initWithTitle:@"Enable popup notifications (Growl)" action:@selector(changeNotifications) keyEquivalent:@""];
     [enableNotifications setState:notificationsEnabled ? NSOnState : NSOffState];
     [preferencesMenu addItem:enableNotifications];
@@ -337,6 +347,9 @@ void setMenuItemTitle(NSMenuItem *menuitem, NSDictionary *msg, bool highlight)
     
     // read notification enabled state
     notificationsEnabled = [[NSUserDefaults standardUserDefaults] boolForKey:DEFAULTS_KEY_NOTIFICATIONS_ENABLED];
+    
+    // read OS notification enabled state
+    osNotificationsEnabled = [[NSUserDefaults standardUserDefaults] boolForKey:DEFAULTS_KEY_OS_NOTIFICATIONS_ENABLED];
     
     // read current hide time
     hideIconTime = [[NSUserDefaults standardUserDefaults] integerForKey:DEFAULTS_KEY_HIDE_ICON_TIME];
@@ -567,15 +580,29 @@ void setMenuItemTitle(NSMenuItem *menuitem, NSDictionary *msg, bool highlight)
     NSMutableArray *newAllItems = [[NSMutableArray alloc] initWithCapacity:[items count]];
     for (NSDictionary *item in [items objectEnumerator]) {
         NSString *link = [item objectForKey:@"link"];
-        if (notificationsEnabled && ![allItems containsObject:link]) {
-            [GrowlApplicationBridge
-                notifyWithTitle:[[item objectForKey:@"site"] objectForKey:@"name"]
-                description:[[item objectForKey:@"body"] stringByDecodingXMLEntities]
-                notificationName:@"NewInbox"
-                iconData:[NSData alloc]
-                priority:0
-                isSticky:NO
-                clickContext:[item objectForKey:@"link"]];
+        if (![allItems containsObject:link]) {
+            if (notificationsEnabled) {
+                [GrowlApplicationBridge
+                    notifyWithTitle:[[item objectForKey:@"site"] objectForKey:@"name"]
+                    description:[[item objectForKey:@"body"] stringByDecodingXMLEntities]
+                    notificationName:@"NewInbox"
+                    iconData:[NSData alloc]
+                    priority:0
+                    isSticky:NO
+                    clickContext:[item objectForKey:@"link"]];
+            }
+            if (osNotificationsEnabled) {
+                Class NSUserNotificationClass = NSClassFromString(@"NSUserNotification");
+                if (NSUserNotificationClass) {
+                    NSUserNotification *notification = [[NSUserNotification alloc] init];
+                    notification.title = [[item objectForKey:@"site"] objectForKey:@"name"];
+                    notification.informativeText = [[item objectForKey:@"body"] stringByDecodingXMLEntities];
+                    notification.soundName = NSUserNotificationDefaultSoundName;
+                    notification.userInfo = @{@"link": item[@"link"]};
+
+                    [[NSUserNotificationCenter defaultUserNotificationCenter] deliverNotification:notification];
+                }
+            }
         }
         [newAllItems addObject:link];
     }
@@ -616,7 +643,11 @@ void setMenuItemTitle(NSMenuItem *menuitem, NSDictionary *msg, bool highlight)
     NSDictionary *msg = [items objectAtIndex:[index unsignedIntValue]];
     // Get the link for the item
     NSString *link = [msg objectForKey:@"link"];
-    NSLog(@"link %@", link);
+    
+    [self openLink:link];
+}
+
+- (void)openLink:(NSString*)link {
     // Open the link in the user's default browser
     [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:link]];
     // Add this item to our local read items list and store it
@@ -644,10 +675,23 @@ void setMenuItemTitle(NSMenuItem *menuitem, NSDictionary *msg, bool highlight)
     }
 }
 
+- (void)userNotificationCenter:(NSUserNotificationCenter *)center didActivateNotification:(NSUserNotification *)notification
+{
+    NSString *link = [notification.userInfo objectForKey:@"link"];
+    [self openLink:link];
+}
+
 -(void)changeNotifications
 {
     notificationsEnabled = !notificationsEnabled;
     [[NSUserDefaults standardUserDefaults] setBool:notificationsEnabled forKey:DEFAULTS_KEY_NOTIFICATIONS_ENABLED];
+    [self resetMenu];
+}
+
+-(void)changeOsNotifications
+{
+    osNotificationsEnabled = !osNotificationsEnabled;
+    [[NSUserDefaults standardUserDefaults] setBool:osNotificationsEnabled forKey:DEFAULTS_KEY_OS_NOTIFICATIONS_ENABLED];
     [self resetMenu];
 }
 
