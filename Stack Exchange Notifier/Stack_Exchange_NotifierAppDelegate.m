@@ -346,13 +346,13 @@ void setMenuItemTitle(NSMenuItem *menuitem, NSDictionary *msg, bool highlight)
 
     // setting icons
     inactiveIcon = [[NSImage alloc] initByReferencingFile:[[NSBundle mainBundle]
-                                    pathForResource:@"favicon_inactive.ico" 
+                                    pathForResource:@"senotifier_inactive.png"
                                     ofType:nil]];
     inactiveIconAlt = [[NSImage alloc] initByReferencingFile:[[NSBundle mainBundle]
-                                       pathForResource:@"favicon_inactive_alt.ico" 
+                                       pathForResource:@"senotifier_inactive_alt.png"
                                        ofType:nil]];
     activeIcon = [[NSImage alloc] initByReferencingFile:[[NSBundle mainBundle]
-                                  pathForResource:@"favicon.ico" 
+                                  pathForResource:@"senotifier.png" 
                                   ofType:nil]];
 
     // register ourselves with growl
