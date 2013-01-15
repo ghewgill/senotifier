@@ -634,6 +634,17 @@ void setMenuItemTitle(NSMenuItem *menuitem, NSDictionary *msg, bool highlight)
     readItems = newReadItems;
     [[NSUserDefaults standardUserDefaults] setObject:readItems forKey:DEFAULTS_KEY_READ_ITEMS];
     
+    // Clean up notification center based on our new allItems list.
+    if (NSClassFromString(@"NSUserNotificationCenter")) {
+        NSArray *notifications = [NSUserNotificationCenter defaultUserNotificationCenter].deliveredNotifications;
+        for (NSUserNotification *n in notifications) {
+            NSString *link = n.userInfo[@"link"];
+            if (![allItems containsObject:link] || [readItems containsObject:link]) {
+                [[NSUserNotificationCenter defaultUserNotificationCenter] removeDeliveredNotification:n];
+            }
+        }
+    }
+    
     // Remember the last time we checked the inbox.
     lastCheck = time(NULL);
     [self resetMenu];
