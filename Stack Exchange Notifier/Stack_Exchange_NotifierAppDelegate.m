@@ -7,6 +7,7 @@
 //
 
 #import "Stack_Exchange_NotifierAppDelegate.h"
+#import "Sparkle/Sparkle.h"
 #include "SBJson.h"
 #include "NSString+html.h"
 
@@ -186,7 +187,9 @@ void setMenuItemTitle(NSMenuItem *menuitem, NSDictionary *msg, bool highlight)
     [menuitem setAttributedTitle:at];
 }
 
-@implementation Stack_Exchange_NotifierAppDelegate
+@implementation Stack_Exchange_NotifierAppDelegate {
+    SUUpdater *sparkleUpdater;
+}
 
 @synthesize window;
 
@@ -299,6 +302,9 @@ void setMenuItemTitle(NSMenuItem *menuitem, NSDictionary *msg, bool highlight)
     [menu addItem:hide];
     [menu setSubmenu:hideMenu forItem:hide];
     [menu addItem:[[NSMenuItem alloc] initWithTitle:@"Invalidate login token" action:@selector(invalidate) keyEquivalent:@""]];
+    NSMenuItem *check_updates = [[NSMenuItem alloc] initWithTitle:@"Check for app updates" action:@selector(checkForUpdates:) keyEquivalent:@""];
+    check_updates.target = sparkleUpdater;
+    [menu addItem:check_updates];
     [menu addItem:[[NSMenuItem alloc] initWithTitle:@"Quit" action:@selector(quit) keyEquivalent:@""]];
 
     // update annotations such as "checked n minutes ago"
@@ -330,6 +336,11 @@ void setMenuItemTitle(NSMenuItem *menuitem, NSDictionary *msg, bool highlight)
     //             no_expiry (request a token with indefinite expiration date)
     //     redirect_uri = where to send the browser when authentication succeeds
     [[web mainFrame] loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"https://stackexchange.com/oauth/dialog?client_id=81&scope=read_inbox,no_expiry&redirect_uri=https://stackexchange.com/oauth/login_success"]]];
+}
+
+- (void)applicationWillFinishLaunching:(NSNotification *)notification
+{
+    sparkleUpdater = [SUUpdater sharedUpdater];
 }
 
 // Initialise the application.
@@ -396,7 +407,9 @@ void setMenuItemTitle(NSMenuItem *menuitem, NSDictionary *msg, bool highlight)
 -(void)showAbout
 {
     [NSApp activateIgnoringOtherApps:YES];
-    [NSApp orderFrontStandardAboutPanel:self];
+    [NSApp orderFrontStandardAboutPanelWithOptions:@{
+        @"Version": @""
+    }];
 }
 
 // Check for new inbox items on the server.

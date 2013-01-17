@@ -43,6 +43,9 @@
 		3735E9F716A5366E0036E6D5 /* senotifier_inactive_alt.png in Resources */ = {isa = PBXBuildFile; fileRef = 3735E9F416A5366E0036E6D5 /* senotifier_inactive_alt.png */; };
 		3735E9F816A5366E0036E6D5 /* senotifier_inactive.png in Resources */ = {isa = PBXBuildFile; fileRef = 3735E9F516A5366E0036E6D5 /* senotifier_inactive.png */; };
 		3735E9F916A5366E0036E6D5 /* senotifier.png in Resources */ = {isa = PBXBuildFile; fileRef = 3735E9F616A5366E0036E6D5 /* senotifier.png */; };
+		3735EA0616A66CB30036E6D5 /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3735EA0516A66CB30036E6D5 /* Sparkle.framework */; };
+		3735EA0716A66CE70036E6D5 /* Sparkle.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3735EA0516A66CB30036E6D5 /* Sparkle.framework */; };
+		3735EA0916A692B10036E6D5 /* dsa_pub.pem in Resources */ = {isa = PBXBuildFile; fileRef = 3735EA0816A692B10036E6D5 /* dsa_pub.pem */; };
 		37F54B5814FD4ECD003F4E0D /* Growl Registration Ticket.growlRegDict in Resources */ = {isa = PBXBuildFile; fileRef = 37F54B5714FD4ECD003F4E0D /* Growl Registration Ticket.growlRegDict */; };
 		37F54B5A14FE9F70003F4E0D /* Growl.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 37F54B5914FE9F70003F4E0D /* Growl.framework */; };
 		37F54B5B14FE9F8E003F4E0D /* Growl.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 37F54B5914FE9F70003F4E0D /* Growl.framework */; };
@@ -58,6 +61,7 @@
 			dstSubfolderSpec = 10;
 			files = (
 				37F54B5B14FE9F8E003F4E0D /* Growl.framework in CopyFiles */,
+				3735EA0716A66CE70036E6D5 /* Sparkle.framework in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -107,6 +111,8 @@
 		3735E9F416A5366E0036E6D5 /* senotifier_inactive_alt.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = senotifier_inactive_alt.png; sourceTree = "<group>"; };
 		3735E9F516A5366E0036E6D5 /* senotifier_inactive.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = senotifier_inactive.png; sourceTree = "<group>"; };
 		3735E9F616A5366E0036E6D5 /* senotifier.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = senotifier.png; sourceTree = "<group>"; };
+		3735EA0516A66CB30036E6D5 /* Sparkle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Sparkle.framework; sourceTree = "<group>"; };
+		3735EA0816A692B10036E6D5 /* dsa_pub.pem */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = dsa_pub.pem; sourceTree = "<group>"; };
 		37F54B5714FD4ECD003F4E0D /* Growl Registration Ticket.growlRegDict */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "Growl Registration Ticket.growlRegDict"; sourceTree = "<group>"; };
 		37F54B5914FE9F70003F4E0D /* Growl.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Growl.framework; sourceTree = "<group>"; };
 		37F9D5FC14D5F39C00DA4B70 /* NSString+html.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+html.h"; sourceTree = "<group>"; };
@@ -122,6 +128,7 @@
 				3735B1F214D4B57A002B0428 /* WebKit.framework in Frameworks */,
 				3735B1BD14D3CF94002B0428 /* Cocoa.framework in Frameworks */,
 				37F54B5A14FE9F70003F4E0D /* Growl.framework in Frameworks */,
+				3735EA0616A66CB30036E6D5 /* Sparkle.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -148,6 +155,7 @@
 		3735B1BB14D3CF94002B0428 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				3735EA0516A66CB30036E6D5 /* Sparkle.framework */,
 				37F54B5914FE9F70003F4E0D /* Growl.framework */,
 				3735B1F114D4B57A002B0428 /* WebKit.framework */,
 				3735B1BC14D3CF94002B0428 /* Cocoa.framework */,
@@ -188,6 +196,7 @@
 		3735B1C314D3CF94002B0428 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				3735EA0816A692B10036E6D5 /* dsa_pub.pem */,
 				3735B1C414D3CF94002B0428 /* Stack Exchange Notifier-Info.plist */,
 				3735B1C514D3CF94002B0428 /* InfoPlist.strings */,
 				3735B1C814D3CF94002B0428 /* main.m */,
@@ -290,6 +299,7 @@
 				3735E9F716A5366E0036E6D5 /* senotifier_inactive_alt.png in Resources */,
 				3735E9F816A5366E0036E6D5 /* senotifier_inactive.png in Resources */,
 				3735E9F916A5366E0036E6D5 /* senotifier.png in Resources */,
+				3735EA0916A692B10036E6D5 /* dsa_pub.pem in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -409,6 +419,7 @@
 					"$(inherited)",
 					"\"$(SRCROOT)/Stack Exchange Notifier\"",
 					"\"$(SRCROOT)\"",
+					"\"$(SRCROOT)/sparkle\"",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Stack Exchange Notifier/Stack Exchange Notifier-Prefix.pch";
@@ -428,6 +439,7 @@
 					"$(inherited)",
 					"\"$(SRCROOT)/Stack Exchange Notifier\"",
 					"\"$(SRCROOT)\"",
+					"\"$(SRCROOT)/sparkle\"",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Stack Exchange Notifier/Stack Exchange Notifier-Prefix.pch";
