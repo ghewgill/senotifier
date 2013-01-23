@@ -500,6 +500,11 @@ void setMenuItemTitle(NSMenuItem *menuitem, NSDictionary *msg, bool highlight)
 // during the login process.
 -(void)webView:(WebView *)sender didFailLoadWithError:(NSError *)error forFrame:(WebFrame *)frame
 {
+    // Ignore NSURLErrorCancelled because that may happen during normal operation,
+    // see http://stackoverflow.com/questions/1024748
+    if (error.code == NSURLErrorCancelled) {
+        return;
+    }
     loginError = [error localizedDescription];
     [self updateMenu];
     [[NSAlert alertWithError:error] runModal];
