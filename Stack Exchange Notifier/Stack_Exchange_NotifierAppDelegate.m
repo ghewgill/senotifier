@@ -329,7 +329,6 @@ void setMenuItemTitle(NSMenuItem *menuitem, NSDictionary *msg, bool highlight)
 -(void)doLogin
 {
     [NSApp activateIgnoringOtherApps:YES];
-    [window makeKeyAndOrderFront:self];
     // this URL includes the
     //     client_id = 81 (specific to this application)
     //     scope = read_inbox (tell the user we want to read their inbox contents)
@@ -471,10 +470,19 @@ void setMenuItemTitle(NSMenuItem *menuitem, NSDictionary *msg, bool highlight)
 // Invalidate login token on the server. Might help with debugging.
 -(void)invalidate
 {
+	
     NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"https://api.stackexchange.com/2.0/access-tokens/%@/invalidate", access_token]]];
     NSURLConnection *conn = [[NSURLConnection alloc] initWithRequest:request delegate:nil];
     if (conn == nil) {
         NSLog(@"failed to create connection");
+    }
+	
+	// Clear cookies, so you don't automatically login again
+	NSHTTPCookie *cookie;
+    NSHTTPCookieStorage *storage = [NSHTTPCookieStorage sharedHTTPCookieStorage];
+    for (cookie in [storage cookies]) {
+		NSLog(@"Cookie: %@", cookie);
+        [storage deleteCookie:cookie];
     }
 }
 
@@ -521,6 +529,11 @@ void setMenuItemTitle(NSMenuItem *menuitem, NSDictionary *msg, bool highlight)
     // Get the current URL from the frame.
     NSURL *url = [[[frame dataSource] request] URL];
     NSLog(@"finished loading %@", [url absoluteString]);
+	// If page is the dialog page, show window so the user can login
+	if ([[url absoluteString] hasPrefix:@"https://stackexchange.com/oauth/dialog"]) {
+        [window makeKeyAndOrderFront:self];
+        return;
+    }
     // Make sure we've ended up at the "login success" page
     if (![[url absoluteString] hasPrefix:@"https://stackexchange.com/oauth/login_success"]) {
         loginError = @"Error logging in to Stack Exchange.";
