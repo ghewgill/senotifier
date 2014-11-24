@@ -51,6 +51,9 @@
 		37F54B5B14FE9F8E003F4E0D /* Growl.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 37F54B5914FE9F70003F4E0D /* Growl.framework */; };
 		37F9D5FE14D5F39C00DA4B70 /* NSString+html.m in Sources */ = {isa = PBXBuildFile; fileRef = 37F9D5FD14D5F39C00DA4B70 /* NSString+html.m */; };
 		37F9D60214DA7D2300DA4B70 /* Credits.html in Resources */ = {isa = PBXBuildFile; fileRef = 37F9D60114DA7D2300DA4B70 /* Credits.html */; };
+		E56154221A23BCB200223132 /* senotifier_inactive_alt@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E561541F1A23BCB200223132 /* senotifier_inactive_alt@2x.png */; };
+		E56154231A23BCB200223132 /* senotifier_inactive@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E56154201A23BCB200223132 /* senotifier_inactive@2x.png */; };
+		E56154241A23BCB200223132 /* senotifier@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E56154211A23BCB200223132 /* senotifier@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -118,6 +121,9 @@
 		37F9D5FC14D5F39C00DA4B70 /* NSString+html.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+html.h"; sourceTree = "<group>"; };
 		37F9D5FD14D5F39C00DA4B70 /* NSString+html.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+html.m"; sourceTree = "<group>"; };
 		37F9D60114DA7D2300DA4B70 /* Credits.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = Credits.html; sourceTree = "<group>"; };
+		E561541F1A23BCB200223132 /* senotifier_inactive_alt@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "senotifier_inactive_alt@2x.png"; sourceTree = "<group>"; };
+		E56154201A23BCB200223132 /* senotifier_inactive@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "senotifier_inactive@2x.png"; sourceTree = "<group>"; };
+		E56154211A23BCB200223132 /* senotifier@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "senotifier@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -180,6 +186,9 @@
 			children = (
 				3735B1F314D50BAE002B0428 /* SBJson */,
 				3735B1CE14D3CF95002B0428 /* Stack_Exchange_NotifierAppDelegate.h */,
+				E561541F1A23BCB200223132 /* senotifier_inactive_alt@2x.png */,
+				E56154201A23BCB200223132 /* senotifier_inactive@2x.png */,
+				E56154211A23BCB200223132 /* senotifier@2x.png */,
 				3735B1CF14D3CF95002B0428 /* Stack_Exchange_NotifierAppDelegate.m */,
 				37250415152F9D2100D5193A /* icon.icns */,
 				37F9D5FC14D5F39C00DA4B70 /* NSString+html.h */,
@@ -294,12 +303,15 @@
 				3735B1C714D3CF94002B0428 /* InfoPlist.strings in Resources */,
 				3735B1D314D3CF95002B0428 /* MainMenu.xib in Resources */,
 				37F9D60214DA7D2300DA4B70 /* Credits.html in Resources */,
+				E56154231A23BCB200223132 /* senotifier_inactive@2x.png in Resources */,
 				37F54B5814FD4ECD003F4E0D /* Growl Registration Ticket.growlRegDict in Resources */,
 				37250416152F9D2100D5193A /* icon.icns in Resources */,
 				3735E9F716A5366E0036E6D5 /* senotifier_inactive_alt.png in Resources */,
 				3735E9F816A5366E0036E6D5 /* senotifier_inactive.png in Resources */,
 				3735E9F916A5366E0036E6D5 /* senotifier.png in Resources */,
 				3735EA0916A692B10036E6D5 /* dsa_pub.pem in Resources */,
+				E56154241A23BCB200223132 /* senotifier@2x.png in Resources */,
+				E56154221A23BCB200223132 /* senotifier_inactive_alt@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
