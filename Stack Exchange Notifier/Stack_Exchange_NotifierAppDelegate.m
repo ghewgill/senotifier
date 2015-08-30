@@ -315,11 +315,9 @@ void setMenuItemTitle(NSMenuItem *menuitem, NSDictionary *msg, bool highlight)
         if (unread > 0) {
             [statusItem setTitle:[NSString stringWithFormat:@"%u", unread]];
             [statusItem setImage:activeIcon];
-            [statusItem setAlternateImage:nil];
         } else {
             [statusItem setTitle:nil];
             [statusItem setImage:inactiveIcon];
-            [statusItem setAlternateImage:inactiveIconAlt];
         }
         [statusItem setMenu:menu];
     }
@@ -369,15 +367,8 @@ void setMenuItemTitle(NSMenuItem *menuitem, NSDictionary *msg, bool highlight)
     }
 
     // setting icons
-    inactiveIcon = [[NSImage alloc] initByReferencingFile:[[NSBundle mainBundle]
-                                    pathForResource:@"senotifier_inactive.png"
-                                    ofType:nil]];
-    inactiveIconAlt = [[NSImage alloc] initByReferencingFile:[[NSBundle mainBundle]
-                                       pathForResource:@"senotifier_inactive_alt.png"
-                                       ofType:nil]];
-    activeIcon = [[NSImage alloc] initByReferencingFile:[[NSBundle mainBundle]
-                                  pathForResource:@"senotifier.png" 
-                                  ofType:nil]];
+    inactiveIcon = [NSImage imageNamed:@"NoNewTemplate"];
+    activeIcon = [NSImage imageNamed:@"YesNewTemplate"];
 
     // register ourselves with growl
     [GrowlApplicationBridge setGrowlDelegate:self];    

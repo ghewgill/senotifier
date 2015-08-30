@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>E7D65AF3-9F27-4F71-AF5E-46C7D6BAD301</string>
+	<key>IDESourceControlProjectName</key>
+	<string>Stack Exchange Notifier</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>0407BF45337BFF84F7C01FF209A997F4A3EF54E9</key>
+		<string>https://github.com/josephyoon/senotifier.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>Stack Exchange Notifier.xcodeproj</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>0407BF45337BFF84F7C01FF209A997F4A3EF54E9</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/josephyoon/senotifier.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>0407BF45337BFF84F7C01FF209A997F4A3EF54E9</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>0407BF45337BFF84F7C01FF209A997F4A3EF54E9</string>
+			<key>IDESourceControlWCCName</key>
+			<string>senotifier</string>
+		</dict>
+	</array>
+</dict>
+</plist>
